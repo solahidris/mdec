@@ -1,0 +1,596 @@
+[
+    {
+      "id": "section-1",
+      "order": 1,
+      "section_name": "COMPANY DETAILS",
+      "sub_sections": [
+        {
+          "id": "section-1-subsection-1",
+          "order": 1,
+          "sub_section_name": "Company's Details",
+          "sub_section_info": "Should there be any changes to be made (where applicable), please send your request to expatctr@mdec.com.my.",
+          "questions": [
+            {
+              "id": "section-1-subsection-1-question-1",
+              "order": 1,
+              "question": "CCM Registration Number",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-1-question-2",
+              "order": 2,
+              "question": "CCM Registration Date",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-1-question-3",
+              "order": 3,
+              "question": "Organization Name",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            }
+          ]
+        },
+        {
+          "id": "section-1-subsection-2",
+          "order": 2,
+          "sub_section_name": "Company's Address",
+          "sub_section_info": "Please provide and fill in your Company and Correspondence addresses.",
+          "questions": [
+            {
+              "id": "section-1-subsection-2-question-1",
+              "order": 1,
+              "question": "Operational Address",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-2-question-2",
+              "order": 2,
+              "question": "Postcode",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-2-question-3",
+              "order": 3,
+              "question": "State",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-2-question-4",
+              "order": 4,
+              "question": "Contact Number",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-2-question-5",
+              "order": 5,
+              "question": "Fax",
+              "question_info": "",
+              "type": "Input field",
+              "required": false
+            },
+            {
+              "id": "section-1-subsection-2-question-6",
+              "order": 6,
+              "question": "Correspondence Address",
+              "question_info": "",
+              "type": "Input field",
+              "required": false
+            },
+            {
+              "id": "section-1-subsection-2-question-7",
+              "order": 7,
+              "question": "Postcode",
+              "question_info": "",
+              "type": "Input field",
+              "required": false
+            },
+            {
+              "id": "section-1-subsection-2-question-8",
+              "order": 8,
+              "question": "State",
+              "question_info": "",
+              "type": "Input field",
+              "required": false
+            },
+            {
+              "id": "section-1-subsection-2-question-9",
+              "order": 9,
+              "question": "Contact Number",
+              "question_info": "",
+              "type": "Input field",
+              "required": false
+            },
+            {
+              "id": "section-1-subsection-2-question-10",
+              "order": 10,
+              "question": "Fax",
+              "question_info": "",
+              "type": "Input field",
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": "section-1-subsection-3",
+          "order": 3,
+          "sub_section_name": "Company Information",
+          "sub_section_info": "A summary of your company details as per latest Companies Commission of Malaysia (CCM) registration\n\nPlease fill in the required field(s).",
+          "questions": [
+            {
+              "id": "section-1-subsection-3-question-1",
+              "order": 1,
+              "question": "Website",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-3-question-2",
+              "order": 2,
+              "question": "Nature of Business",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-3-question-3",
+              "order": 3,
+              "question": "Paid Up Capital",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            }
+          ]
+        },
+        {
+          "id": "section-1-subsection-4",
+          "order": 4,
+          "sub_section_name": "Employment Projection",
+          "sub_section_info": "",
+          "questions": [
+            {
+              "id": "section-1-subsection-4-question-1",
+              "order": 1,
+              "question": "Total Local Staff Employed",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-4-question-2",
+              "order": 2,
+              "question": "Foreign Knowledge Workers Projection For Year 2025",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-4-question-3",
+              "order": 3,
+              "question": "Total Foreign Staff Employed",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            }
+          ]
+        },
+        {
+          "id": "section-1-subsection-5",
+          "order": 5,
+          "sub_section_name": "E-Invoice Information",
+          "sub_section_info": "",
+          "questions": [
+            {
+              "id": "section-1-subsection-5-question-1",
+              "order": 1,
+              "question": "Contact Name",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-5-question-2",
+              "order": 2,
+              "question": "Tax Identification Number (TIN) - Income Tax Number",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-5-question-3",
+              "order": 3,
+              "question": "Email Address",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-5-question-4",
+              "order": 4,
+              "question": "Sales and Service Tax (SST) No",
+              "question_info": "Enter 'N/A' if you do not have SST No.",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-5-question-5",
+              "order": 5,
+              "question": "Contact No",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-1-subsection-5-question-6",
+              "order": 6,
+              "question": "New CCM Registration Number",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "order": 2,
+      "section_name": "DIRECTORS AND SHAREHOLDERS",
+      "sub_sections": [
+        {
+          "id": "section-2-subsection-1",
+          "order": 1,
+          "sub_section_name": "Directors Information",
+          "sub_section_info": "Please fill in company Director(s) details in accordance to SSM information.",
+          "questions": [
+            {
+              "id": "section-2-subsection-1-question-1",
+              "order": 1,
+              "question": "Document Type",
+              "question_info": "",
+              "type": "Select",
+              "required": true,
+              "options": [
+                {
+                  "label": "MyKad",
+                  "value": "mykad"
+                },
+                {
+                  "label": "Passport",
+                  "value": "passport"
+                }
+              ]
+            },
+            {
+              "id": "section-2-subsection-1-question-2",
+              "order": 2,
+              "question": "Document Number",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-2-subsection-1-question-3",
+              "order": 3,
+              "question": "Name",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "order": 3,
+      "section_name": "AUTHORISED PERSONNEL",
+      "sub_sections": [
+        {
+          "id": "section-3-subsection-1",
+          "order": 1,
+          "sub_section_name": "Company Contact Details",
+          "sub_section_info": "",
+          "questions": [
+            {
+              "id": "section-3-subsection-1-question-1",
+              "order": 1,
+              "question": "Contact Person",
+              "question_info": "",
+              "type": "Input field",
+              "required": false
+            },
+            {
+              "id": "section-3-subsection-1-question-2",
+              "order": 2,
+              "question": "Designation",
+              "question_info": "",
+              "type": "Input field",
+              "required": false
+            },
+            {
+              "id": "section-3-subsection-1-question-3",
+              "order": 3,
+              "question": "Contact Number",
+              "question_info": "",
+              "type": "Input field",
+              "required": false
+            },
+            {
+              "id": "section-3-subsection-1-question-4",
+              "order": 4,
+              "question": "Email",
+              "question_info": "",
+              "type": "Input field",
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": "section-3-subsection-2",
+          "order": 2,
+          "sub_section_name": "Endorser",
+          "sub_section_info": "Chief Executive Officer (or equivalent) of the company or any officer of the company authorized by the Chief Executive Officer (or equivalent) to act on behalf of the company to appoint the Authorized Person for Expatriate Services and Authorized Person for Submission and Collection of Documents.",
+          "questions": [
+            {
+              "id": "section-3-subsection-2-question-1",
+              "order": 1,
+              "question": "Name",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-3-subsection-2-question-2",
+              "order": 2,
+              "question": "NRIC / Passport Number",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-3-subsection-2-question-3",
+              "order": 3,
+              "question": "Designation",
+              "question_info": "",
+              "type": "Select",
+              "required": true,
+              "options": [
+                {
+                  "label": "CHIEF EXECUTIVE OFFICER",
+                  "value": "chief_executive_officer"
+                },
+                {
+                  "label": "MANAGING DIRECTOR",
+                  "value": "managing_director"
+                },
+                {
+                  "label": "PRESIDENT",
+                  "value": "president"
+                },
+                {
+                  "label": "VICE PRESIDENT",
+                  "value": "vice_president"
+                },
+                {
+                  "label": "COUNTRY MANAGER",
+                  "value": "country_manager"
+                },
+                {
+                  "label": "REGIONAL DIRECTOR",
+                  "value": "regional_director"
+                },
+                {
+                  "label": "COMPANY DIRECTOR",
+                  "value": "company_director"
+                },
+                {
+                  "label": "CHIEF OPERATING OFFICER",
+                  "value": "chief_operating_officer"
+                },
+                {
+                  "label": "CHIEF TECHNOLOGY OFFICER",
+                  "value": "chief_technology_officer"
+                },
+                {
+                  "label": "HEAD OF DIVISION",
+                  "value": "head_of_division"
+                },
+                {
+                  "label": "CHIEF FINANCE OFFICER",
+                  "value": "chief_finance_officer"
+                },
+                {
+                  "label": "GENERAL MANAGER",
+                  "value": "general_manager"
+                }
+              ]
+            },
+            {
+              "id": "section-3-subsection-2-question-4",
+              "order": 4,
+              "question": "Contact Number",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-3-subsection-2-question-5",
+              "order": 5,
+              "question": "Mobile Number",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-3-subsection-2-question-6",
+              "order": 6,
+              "question": "Email",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            }
+          ]
+        },
+        {
+          "id": "section-3-subsection-3",
+          "order": 3,
+          "sub_section_name": "Authorised Person for Expatriate Services",
+          "sub_section_info": "Authorised Person for Expatriate Services:\n\nPerson(s) (officers of the company or third party) authorized by the Endorser to conduct the following on behalf of the company\n\nTo manage the application for Employment Pass and all related passes for the company's foreign knowledge workers (FKW) submitted through eXpats Service Centre;\n\nTo submit application of Employment Pass and all related passes, including all supporting documents through eXpats Service Centre;\n\nTo access and make relevant submission through the eXpats online system in relation to the company's FKW application;\n\nTo ensure that all information and/or documents submitted or to be submitted in relation to the company's FKW application through the eXpats System and the eXpats Service Centre do not contain any false, untrue or inaccurate statement.\n\nPlease fill in the Authorised Person details for Expatriate Services.\n\n\nPlease take note that the maximum number allowed is 5 persons.",
+          "questions": [
+            {
+              "id": "section-3-subsection-3-question-1",
+              "order": 1,
+              "question": "Is the authorised personnel an employee to your company / group of company?",
+              "question_info": "",
+              "type": "Select",
+              "required": false,
+              "options": [
+                {
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            {
+              "id": "section-3-subsection-3-question-2",
+              "order": 2,
+              "question": "Name",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-3-subsection-3-question-3",
+              "order": 3,
+              "question": "NRIC / Passport Number",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-3-subsection-3-question-4",
+              "order": 4,
+              "question": "Contact Number",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-3-subsection-3-question-5",
+              "order": 5,
+              "question": "Mobile Number",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            },
+            {
+              "id": "section-3-subsection-3-question-6",
+              "order": 6,
+              "question": "Email",
+              "question_info": "",
+              "type": "Input field",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "section-4",
+      "order": 4,
+      "section_name": "DOCUMENTS",
+      "sub_sections": [
+        {
+          "id": "section-4-subsection-1",
+          "order": 1,
+          "sub_section_name": "Mandatory",
+          "sub_section_info": "",
+          "questions": [
+            {
+              "id": "section-4-subsection-1-question-1",
+              "order": 1,
+              "question": "Tenancy Agreement / Sales and Purchase / Sub-tenancy Agreement (at least 6 months validity period) and stamped by LHDN.",
+              "question_info": "In the event if there is a change of MSC/MD address, re-submission is required\n\nImportant:\n1. Office/business premise is operational during business hours\n2. Company personnel present in office/business premise during business hours\n3. Company is conducting related ICT Sector activities at business premise\n4. Clear demarcation of office space (applicable only to sub-let tenancy agreement)\n5. Company to provide designated office premise pictures (main entrance, reception area, & working space)",
+              "type": "Upload",
+              "required": true
+            },
+            {
+              "id": "section-4-subsection-1-question-2",
+              "order": 2,
+              "question": "E-SSM search document (latest 6 months)",
+              "question_info": "",
+              "type": "Upload",
+              "required": true
+            },
+            {
+              "id": "section-4-subsection-1-question-3",
+              "order": 3,
+              "question": "Phone bill registered under the company name",
+              "question_info": "",
+              "type": "Upload",
+              "required": true
+            },
+            {
+              "id": "section-4-subsection-1-question-4",
+              "order": 4,
+              "question": "Company profile i.e., business activities, revenue model, clientele, website, Organisation/Group structure and disclose subsidiary(s) if applicable.",
+              "question_info": "",
+              "type": "Upload",
+              "required": true
+            },
+            {
+              "id": "section-4-subsection-1-question-5",
+              "order": 5,
+              "question": "Registration and Approval Letter from Department of Labour Peninsular Malaysia (JTKSM) **",
+              "question_info": "Companies are required to obtain prior approval from Director General, Department of Labour Peninsular Malaysia (JTKSM) before employing Expatriate/Foreign Knowledge Worker (FKW) based on the provisions of Section 60K, Employment Act 1955.\n\nAnnouncement: https://mdec.my/expat/reminder-on-requirement-by-dept-labour-peninsular-malaysia\n\nFor further assistance and detailed information, you may email JTKSM directly at bpajtksm@mohr.gov.my or contact their office at 03-8886 2498/5192/2361.\n\nShould you require more information and assistance, please contact us via email at expatctr@mdec.com.my or contact us at 03-8315 3106/3157",
+              "type": "Upload",
+              "required": true
+            }
+          ]
+        },
+        {
+          "id": "section-4-subsection-2",
+          "order": 2,
+          "sub_section_name": "Optional",
+          "sub_section_info": "",
+          "questions": [
+            {
+              "id": "section-4-subsection-2-question-1",
+              "order": 1,
+              "question": "Latest Master Service Agreement (MSA) / Contract / PO / SOW / LOA (Note: Not applicable for captive services)",
+              "question_info": "Information required includes; Client, project name, scope of work, project value, duration, position name, headcounts required, justification to hire FKW, etc.\n\nApplicable only if the company is applying for FKW quota during the subscription stage\n\nExample: Template (Simple Excel) https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fmdec.my%2Fwp-content%2Fuploads%2F2023%2F06%2FSimplified-FKW-Projection-Template-2023.xlsx&wdOrigin=BROWSELINK",
+              "type": "Upload",
+              "required": false
+            },
+            {
+              "id": "section-4-subsection-2-question-2",
+              "order": 2,
+              "question": "Latest certified true copy of company's past years financial audited report and/or management account (year to date) **",
+              "question_info": "Applicable for company with more than TWO(2) years in operation",
+              "type": "Upload",
+              "required": false
+            }
+          ]
+        }
+      ]
+    }
+  ]

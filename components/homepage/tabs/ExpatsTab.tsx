@@ -7,6 +7,8 @@ import { FeatureCard } from "../FeatureCard";
 import { EligibilitySection } from "../EligibilitySection";
 import { Users } from "lucide-react";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export const ExpatsTab = () => {
   return (
@@ -89,6 +91,16 @@ export const ExpatsTab = () => {
           "Family relocation support available",
         ]}
       />
+
+      {/* Apply Now CTA */}
+      <div className="text-center pt-8">
+        <a 
+          href="/expats"
+          className="inline-flex items-center justify-center text-lg px-8 py-6 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition-all cursor-pointer"
+        >
+          Apply Now
+        </a>
+      </div>
     </TabsContent>
   );
 };

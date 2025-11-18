@@ -18,7 +18,8 @@ const Home = () => {
       <Hero />
 
       {/* Main Application Programmes Section */}
-      <main className="container mx-auto px-4 py-16 md:py-24 max-w-7xl">
+      <main className="-mt-10 md:-mt-8 rounded-t-[30px] relative z-10 bg-zinc-100">
+        <div className="container mx-auto px-4 py-16 md:py-24 max-w-7xl">
         <SectionHeader
           badge="Application Programmes"
           title="Choose Your Path to Success"
@@ -27,7 +28,7 @@ const Home = () => {
 
         <Tabs defaultValue="expats" className="w-full">
           {/* Tab Navigation */}
-          <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 mb-16 h-16 p-1.5 bg-gray-200 rounded-2xl">
+          <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 mb-16 h-16 p-1.5 bg-white rounded-2xl shadow-md">
             <TabsTrigger
               value="expats"
               className="cursor-pointer text-base font-semibold flex items-center justify-center gap-2 rounded-xl transition-all"
@@ -55,6 +56,7 @@ const Home = () => {
           <MTEPTab />
           <DERantauTab />
         </Tabs>
+        </div>
       </main>
 
       <Footer />

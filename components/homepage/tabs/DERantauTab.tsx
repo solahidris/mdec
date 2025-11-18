@@ -12,6 +12,8 @@ import { Plane, Globe, Building2, Coffee, Wifi, Sparkles, Check } from "lucide-r
 import { ProgrammeHeader } from "../ProgrammeHeader";
 import { StatCard } from "../StatCard";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export const DERantauTab = () => {
   const cards = [
@@ -235,6 +237,16 @@ export const DERantauTab = () => {
           />
         </div>
       </motion.div>
+
+      {/* Apply Now CTA */}
+      <div className="text-center pt-8">
+        <a 
+          href="/derantau"
+          className="inline-flex items-center justify-center text-lg px-8 py-6 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition-all cursor-pointer"
+        >
+          Apply Now
+        </a>
+      </div>
     </TabsContent>
   );
 };

@@ -1,143 +1,168 @@
+import { Facebook, Youtube, Instagram, Twitter, Linkedin } from "lucide-react";
+
 export const Footer = () => {
   return (
     <footer className="border-t mt-24 bg-black text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          <div>
+      <div className="container mx-auto px-4 py-16">
+        {/* Main Footer Content */}
+        <div className="grid md:grid-cols-12 gap-8 mb-12">
+          {/* MDEC Brand Section - Takes up more space */}
+          <div className="md:col-span-4">
             <img
               src="/images/mdec-white.png"
               alt="MDEC Logo"
-              className="h-10 w-auto mb-3"
+              className="h-12 w-auto mb-4"
             />
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
               Malaysia Digital Economy Corporation driving the nation's
               digital transformation
             </p>
+            {/* Social Media Links */}
+            <div className="flex gap-4">
+              <a 
+                href="https://www.facebook.com/MyMDEC/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary flex items-center justify-center transition-colors"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.youtube.com/mymdec" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary flex items-center justify-center transition-colors"
+              >
+                <Youtube className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.instagram.com/mymdec/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary flex items-center justify-center transition-colors"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://twitter.com/mymdec" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary flex items-center justify-center transition-colors"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.linkedin.com/company/mymdec/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary flex items-center justify-center transition-colors"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
           </div>
-          <div>
-            <h4 className="font-semibold mb-3 text-white">Programmes</h4>
-            <ul className="space-y-2 text-sm">
+
+          {/* Navigation Links */}
+          <div className="md:col-span-2">
+            <h4 className="font-semibold mb-4 text-white">Programmes</h4>
+            <ul className="space-y-3 text-sm">
               <li>
                 <a
-                  href="#"
-                  className="text-gray-400 hover:text-primary transition-colors cursor-pointer"
+                  href="/expats"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
                   Expats Service
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="text-gray-400 hover:text-primary transition-colors cursor-pointer"
+                  href="/mtep"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
                   MTEP
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="text-gray-400 hover:text-primary transition-colors cursor-pointer"
+                  href="/derantau"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
                   DE Rantau
                 </a>
               </li>
             </ul>
           </div>
-          <div>
-            <h4 className="font-semibold mb-3 text-white">Resources</h4>
-            <ul className="space-y-2 text-sm">
+
+          <div className="md:col-span-2">
+            <h4 className="font-semibold mb-4 text-white">Resources</h4>
+            <ul className="space-y-3 text-sm">
               <li>
                 <a
-                  href="#"
-                  className="text-gray-400 hover:text-primary transition-colors cursor-pointer"
+                  href="/about"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
-                  FAQs
+                  About
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="text-gray-400 hover:text-primary transition-colors cursor-pointer"
+                  href="/contact"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
-                  Guidelines
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-primary transition-colors cursor-pointer"
-                >
-                  Support
+                  Contact
                 </a>
               </li>
             </ul>
           </div>
-          <div>
-            <h4 className="font-semibold mb-3 text-white">Contact</h4>
-            <ul className="space-y-2 text-sm">
+
+          <div className="md:col-span-2">
+            <h4 className="font-semibold mb-4 text-white">Company</h4>
+            <ul className="space-y-3 text-sm">
               <li>
                 <a
-                  href="#"
-                  className="text-gray-400 hover:text-primary transition-colors cursor-pointer"
+                  href="/about"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
                   Contact Us
                 </a>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-primary transition-colors cursor-pointer"
-                >
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-primary transition-colors cursor-pointer"
-                >
-                  Press
-                </a>
-              </li>
             </ul>
           </div>
-        </div>
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-6">
-            <p className="text-sm text-gray-400">
-              © 2025 Malaysia Digital Economy Corporation. All rights
-              reserved.
-            </p>
-            <div className="flex flex-col items-center">
-              <img
-                src="/images/kkd.png"
-                alt="Ministry of Digital"
-                className="h-12 w-auto mb-1"
-              />
-              <p className="text-xs text-gray-400 text-center font-semibold leading-tight w-28">
-                Ministry of Digital
-              </p>
-            </div>
+
+          {/* Ministry Logo Section */}
+          <div className="md:col-span-2 flex flex-col items-start md:items-center">
+            <img
+              src="/images/kkd.png"
+              alt="Ministry of Digital"
+              className="h-14 w-auto mb-2"
+            />
+            <p className="text-xs text-gray-400 font-semibold">Ministry of Digital</p>
           </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-gray-400">
+            © 2025 Malaysia Digital Economy Corporation. All rights reserved.
+          </p>
           <div className="flex gap-6 text-sm">
-            <a
-              href="#"
-              className="text-gray-400 hover:text-primary transition-colors cursor-pointer"
-            >
+            <span className="text-gray-400">
               Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-primary transition-colors cursor-pointer"
-            >
+            </span>
+            <span className="text-gray-400">
               Terms of Service
-            </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-primary transition-colors cursor-pointer"
-            >
+            </span>
+            <span className="text-gray-400">
               Cookies
-            </a>
+            </span>
           </div>
         </div>
       </div>

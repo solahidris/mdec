@@ -8,7 +8,7 @@ interface ContainerProps {
 
 export const Container = ({ children, className }: ContainerProps) => {
   return (
-    <div className={cn("min-h-screen bg-zinc-50", className)}>
+    <div className={cn("min-h-screen bg-zinc-100", className)}>
       {children}
     </div>
   );
