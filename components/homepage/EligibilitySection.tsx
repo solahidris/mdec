@@ -26,7 +26,7 @@ export const EligibilitySection = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="bg-gray-50 rounded-2xl p-8 md:p-12"
+      className="bg-gray-50 rounded-2xl p-8 md:p-12 shadow-md"
     >
       <motion.h4
         initial={{ opacity: 0, y: 20 }}

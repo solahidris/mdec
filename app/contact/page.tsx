@@ -252,7 +252,7 @@ const ContactPage = () => {
                       }
                       className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
                     />
-                    <Label htmlFor="pdpa" className="text-sm cursor-pointer">
+                    <label htmlFor="pdpa" className="text-sm cursor-pointer">
                       I hereby grant consent to Malaysia Digital Economy Corporation
                       Sdn. Bhd. (MDEC) to process the personal data provided in this
                       Contact Us Form or to be provided in relation to this Contact Us
@@ -269,7 +269,7 @@ const ContactPage = () => {
                       Protection Statement and agreed to the processing of such
                       personal data by MDEC in the manner set out therein.
                       <span className="text-red-600 ml-1">*</span>
-                    </Label>
+                    </label>
                   </div>
                   {errors.pdpa && (
                     <p className="text-sm text-red-600">{errors.pdpa}</p>

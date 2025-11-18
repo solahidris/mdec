@@ -22,6 +22,7 @@ export const ExpatsTab = () => {
         badgeText="For Foreign Talent"
         title="Expats Service Centre"
         description="One-stop centre providing comprehensive support for foreign knowledge workers seeking employment in Malaysia's digital economy. Streamlined application processes, relocation assistance, and compliance advisory services."
+        href="/expats"
       />
 
       {/* Services Overview */}
@@ -91,16 +92,6 @@ export const ExpatsTab = () => {
           "Family relocation support available",
         ]}
       />
-
-      {/* Apply Now CTA */}
-      <div className="text-center pt-8">
-        <a 
-          href="/expats"
-          className="inline-flex items-center justify-center text-lg px-8 py-6 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition-all cursor-pointer"
-        >
-          Apply Now
-        </a>
-      </div>
     </TabsContent>
   );
 };

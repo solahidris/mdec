@@ -63,6 +63,7 @@ export const DERantauTab = () => {
         badgeText="For Digital Nomads"
         title="DE Rantau"
         description="Work remotely from Malaysia while experiencing the vibrant culture and lifestyle of Southeast Asia. The DE Rantau programme offers digital nomads a unique opportunity to live, work, and connect in Malaysia's thriving tech ecosystem."
+        href="/derantau"
       />
 
       {/* Programme Features */}
@@ -199,7 +200,7 @@ export const DERantauTab = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="bg-gray-50 rounded-2xl p-8 md:p-12"
+        className="bg-gray-50 rounded-2xl p-8 md:p-12 shadow-md"
       >
         <motion.h4
           initial={{ opacity: 0, y: 20 }}
@@ -237,16 +238,6 @@ export const DERantauTab = () => {
           />
         </div>
       </motion.div>
-
-      {/* Apply Now CTA */}
-      <div className="text-center pt-8">
-        <a 
-          href="/derantau"
-          className="inline-flex items-center justify-center text-lg px-8 py-6 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition-all cursor-pointer"
-        >
-          Apply Now
-        </a>
-      </div>
     </TabsContent>
   );
 };

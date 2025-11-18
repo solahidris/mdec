@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export const Hero = () => {
   return (
@@ -43,20 +44,24 @@ export const Hero = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 cursor-pointer font-semibold px-8"
-            >
-              Explore Programmes
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-white text-black border-white hover:bg-white/90 cursor-pointer font-semibold px-8"
-            >
-              About MDEC
-            </Button>
+            <Link href="/expats">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 cursor-pointer font-semibold px-8"
+              >
+                Explore Programmes
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link href="/about">
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-white text-black border-white hover:bg-white/90 cursor-pointer font-semibold px-8"
+              >
+                About MDEC
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </div>

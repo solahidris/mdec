@@ -4,12 +4,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface ProgrammeHeaderProps {
   icon: LucideIcon;
   badgeText: string;
   title: string;
   description: string;
+  href: string;
 }
 
 export const ProgrammeHeader = ({
@@ -17,6 +19,7 @@ export const ProgrammeHeader = ({
   badgeText,
   title,
   description,
+  href,
 }: ProgrammeHeaderProps) => {
   return (
     <motion.div
@@ -68,13 +71,15 @@ export const ProgrammeHeader = ({
           transition={{ duration: 0.5, delay: 0.4 }}
           whileHover={{ scale: 1.05 }}
         >
-          <Button
-            size="lg"
-            className="bg-primary hover:bg-primary/90 cursor-pointer shadow-lg whitespace-nowrap font-semibold"
-          >
-            Apply Now
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          <Link href={href}>
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 cursor-pointer shadow-lg whitespace-nowrap font-semibold"
+            >
+              Apply Now
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </motion.div>

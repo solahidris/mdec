@@ -29,6 +29,7 @@ export const MTEPTab = () => {
         badgeText="For Tech Entrepreneurs"
         title="Malaysia Tech Entrepreneur Programme"
         description="Empowering tech entrepreneurs to establish, scale, and succeed in Malaysia. Four specialized pass types designed for founders, investors, and senior management in the digital technology sector."
+        href="/mtep"
       />
 
       {/* Pass Types */}
@@ -104,7 +105,7 @@ export const MTEPTab = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="bg-gray-50 rounded-2xl p-8 md:p-12"
+        className="bg-gray-50 rounded-2xl shadow-md p-8 md:p-12"
       >
         <motion.h4
           initial={{ opacity: 0, y: 20 }}
@@ -136,16 +137,6 @@ export const MTEPTab = () => {
           />
         </div>
       </motion.div>
-
-      {/* Apply Now CTA */}
-      <div className="text-center pt-8">
-        <a 
-          href="/mtep"
-          className="inline-flex items-center justify-center text-lg px-8 py-6 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition-all cursor-pointer"
-        >
-          Apply Now
-        </a>
-      </div>
     </TabsContent>
   );
 };
