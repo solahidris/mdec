@@ -1,0 +1,95 @@
+{
+  "metadata": {
+    "description": "Combined MDEC programmes application form data",
+    "created": "2025-11-18",
+    "note": "This is a reference/backup file. Use individual files in production.",
+    "programmes": ["de-rantau", "expats", "mtep"]
+  },
+  "programmes": {
+    "de-rantau": {
+      "id": "de-rantau",
+      "name": "DE Rantau",
+      "description": "Digital Economy Nomad Pass for remote workers and freelancers",
+      "target_audience": "Foreign digital nomads, freelancers, and remote workers",
+      "dataFile": "./de-rantau.json",
+      "sections": [
+        "Personal Details",
+        "Passport",
+        "Academic",
+        "Experience And Project",
+        "Sponsor",
+        "Dependant",
+        "Supporting Documents"
+      ],
+      "totalSections": 7,
+      "totalQuestions": 73
+    },
+    "expats": {
+      "id": "expats",
+      "name": "eXpats",
+      "description": "Employment Pass services for companies hiring foreign knowledge workers",
+      "target_audience": "Malaysian companies registered with CCM",
+      "dataFile": "./expats.json",
+      "sections": [
+        "Company Details",
+        "Directors and Shareholders",
+        "Authorised Personnel",
+        "Documents"
+      ],
+      "totalSections": 4,
+      "totalQuestions": 41
+    },
+    "mtep": {
+      "id": "mtep",
+      "name": "MTEP",
+      "description": "Malaysia Tech Entrepreneur Programme for startup founders",
+      "target_audience": "Foreign tech entrepreneurs with innovative business ideas",
+      "dataFile": "./mtep.json",
+      "sections": [
+        "Personal",
+        "Sponsor",
+        "Qualification & Experience",
+        "Passport",
+        "Business Idea",
+        "Declaration",
+        "Documents"
+      ],
+      "totalSections": 7,
+      "totalQuestions": 54
+    }
+  },
+  "sharedStructure": {
+    "description": "All programmes follow this consistent data structure",
+    "schema": {
+      "root": "Array of sections",
+      "section": {
+        "id": "string",
+        "order": "number",
+        "section_name": "string",
+        "sub_sections": "Array of sub-sections"
+      },
+      "sub_section": {
+        "id": "string",
+        "order": "number",
+        "sub_section_name": "string",
+        "sub_section_info": "string (optional)",
+        "questions": "Array of questions"
+      },
+      "question": {
+        "id": "string",
+        "order": "number",
+        "question": "string",
+        "question_info": "string (optional)",
+        "type": "string (Input field|Select|Upload|Date Picker)",
+        "required": "boolean",
+        "options": "Array (optional, for Select type)"
+      }
+    }
+  },
+  "usage": {
+    "recommendation": "Import individual programme files in your application",
+    "example": "import deRantauData from './de-rantau.json'",
+    "thisFile": "Use this file for documentation, testing, or as a reference only"
+  }
+}
+

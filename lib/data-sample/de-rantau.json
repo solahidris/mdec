@@ -1,0 +1,1105 @@
+[
+  {
+    "id": "section-1",
+    "order": 1,
+    "section_name": "Personal Details",
+    "sub_sections": [
+      {
+        "id": "section-1-subsection-1",
+        "order": 1,
+        "sub_section_name": "Personal Details",
+        "sub_section_info": "",
+        "questions": [
+          {
+            "id": "section-1-subsection-1-question-1",
+            "order": 1,
+            "question": "Passport Photo Required",
+            "question_info": "",
+            "type": "Upload",
+            "required": true
+          },
+          {
+            "id": "section-1-subsection-1-question-2",
+            "order": 2,
+            "question": "Name\n(as per Passport Machine Readable Zone)",
+            "question_info": "Applicant Name Requirement\nPlease provide the applicant's name as per in the Machine Readable Zone (MRZ) in the passport.\n\nName as per passport:   MERIOLES EMILE DON DIMAYUGA\nName as in the MRZ:      MERIOLES EMILE DON\nThe arrangement of name will appear in the sticker will follow as in the MRZ, Full Name.",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-1-subsection-1-question-3",
+            "order": 3,
+            "question": "Email",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-1-subsection-1-question-4",
+            "order": 4,
+            "question": "Gender",
+            "question_info": "",
+            "type": "Select",
+            "required": true,
+            "options": [
+              {
+                "label": "Male",
+                "value": "male"
+              },
+              {
+                "label": "Female",
+                "value": "female"
+              }
+            ]
+          },
+          {
+            "id": "section-1-subsection-1-question-5",
+            "order": 5,
+            "question": "Marital Status",
+            "question_info": "",
+            "type": "Select",
+            "required": true,
+            "options": [
+              {
+                "label": "MARRIED",
+                "value": "married"
+              },
+              {
+                "label": "SINGLE",
+                "value": "single"
+              },
+              {
+                "label": "WIDOWED",
+                "value": "widowed"
+              },
+              {
+                "label": "DIVORCED",
+                "value": "divorced"
+              }
+            ]
+          },
+          {
+            "id": "section-1-subsection-1-question-6",
+            "order": 6,
+            "question": "Nationality",
+            "question_info": "",
+            "type": "Select",
+            "required": true
+          },
+          {
+            "id": "section-1-subsection-1-question-7",
+            "order": 7,
+            "question": "Date of Birth",
+            "question_info": "",
+            "type": "Date Picker",
+            "required": true
+          },
+          {
+            "id": "section-1-subsection-1-question-8",
+            "order": 8,
+            "question": "Country of Birth",
+            "question_info": "",
+            "type": "Select",
+            "required": true
+          },
+          {
+            "id": "section-1-subsection-1-question-9",
+            "order": 9,
+            "question": "State of Birth",
+            "question_info": "",
+            "type": "Select",
+            "required": false
+          },
+          {
+            "id": "section-1-subsection-1-question-10",
+            "order": 10,
+            "question": "Income Tax Number",
+            "question_info": "This is a unique number issued by Inland Revenue Board of Malaysia for individual who are required to report his/her income for assessment to the Director General of Inland Revenue.\n\nExample: SG-XXXX-XXXX",
+            "type": "Input field",
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "section-1-subsection-2",
+        "order": 2,
+        "sub_section_name": "Correspondence / Residential Address in Country Of Origin",
+        "sub_section_info": "",
+        "questions": [
+          {
+            "id": "section-1-subsection-2-question-1",
+            "order": 1,
+            "question": "Address Line 1",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-1-subsection-2-question-2",
+            "order": 2,
+            "question": "Address Line 2",
+            "question_info": "",
+            "type": "Input field",
+            "required": false
+          },
+          {
+            "id": "section-1-subsection-2-question-3",
+            "order": 3,
+            "question": "Postcode",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-1-subsection-2-question-4",
+            "order": 4,
+            "question": "Country",
+            "question_info": "",
+            "type": "Select",
+            "required": false
+          },
+          {
+            "id": "section-1-subsection-2-question-5",
+            "order": 5,
+            "question": "State",
+            "question_info": "",
+            "type": "Select",
+            "required": false
+          },
+          {
+            "id": "section-1-subsection-2-question-6",
+            "order": 6,
+            "question": "Contact Number",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "section-1-subsection-3",
+        "order": 3,
+        "sub_section_name": "Emergency Contact Details",
+        "sub_section_info": "",
+        "questions": [
+          {
+            "id": "section-1-subsection-3-question-1",
+            "order": 1,
+            "question": "Full Name",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-1-subsection-3-question-2",
+            "order": 2,
+            "question": "Relationship with Applicant",
+            "question_info": "",
+            "type": "Select",
+            "required": true,
+            "options": [
+              {
+                "label": "Wife",
+                "value": "wife"
+              },
+              {
+                "label": "Husband",
+                "value": "husband"
+              },
+              {
+                "label": "Mother",
+                "value": "mother"
+              },
+              {
+                "label": "Father",
+                "value": "father"
+              },
+              {
+                "label": "Brother",
+                "value": "brother"
+              },
+              {
+                "label": "Sister",
+                "value": "sister"
+              },
+              {
+                "label": "Mother in Law",
+                "value": "mother_in_law"
+              },
+              {
+                "label": "Father in Law",
+                "value": "father_in_law"
+              }
+            ]
+          },
+          {
+            "id": "section-1-subsection-3-question-3",
+            "order": 3,
+            "question": "Correspondence / Residential Address in Country of Origin",
+            "question_info": "",
+            "type": "Input field",
+            "required": false
+          },
+          {
+            "id": "section-1-subsection-3-question-4",
+            "order": 4,
+            "question": "Address Line 1",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-1-subsection-3-question-5",
+            "order": 5,
+            "question": "Address Line 2",
+            "question_info": "",
+            "type": "Input field",
+            "required": false
+          },
+          {
+            "id": "section-1-subsection-3-question-6",
+            "order": 6,
+            "question": "Country",
+            "question_info": "",
+            "type": "Select",
+            "required": false
+          },
+          {
+            "id": "section-1-subsection-3-question-7",
+            "order": 7,
+            "question": "State",
+            "question_info": "",
+            "type": "Select",
+            "required": true
+          },
+          {
+            "id": "section-1-subsection-3-question-8",
+            "order": 8,
+            "question": "Postcode",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-1-subsection-3-question-9",
+            "order": 9,
+            "question": "Contact Number",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-1-subsection-3-question-10",
+            "order": 10,
+            "question": "Email",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "section-1-subsection-4",
+        "order": 4,
+        "sub_section_name": "Social Media Information",
+        "sub_section_info": "Please provide the link for your social media (optional, if applicable)",
+        "questions": [
+          {
+            "id": "section-1-subsection-4-question-1",
+            "order": 1,
+            "question": "Facebook",
+            "question_info": "",
+            "type": "Input field",
+            "required": false
+          },
+          {
+            "id": "section-1-subsection-4-question-2",
+            "order": 2,
+            "question": "Instagram",
+            "question_info": "",
+            "type": "Input field",
+            "required": false
+          },
+          {
+            "id": "section-1-subsection-4-question-3",
+            "order": 3,
+            "question": "Twitter",
+            "question_info": "",
+            "type": "Input field",
+            "required": false
+          },
+          {
+            "id": "section-1-subsection-4-question-4",
+            "order": 4,
+            "question": "Linkedin",
+            "question_info": "",
+            "type": "Input field",
+            "required": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "section-2",
+    "order": 2,
+    "section_name": "Passport",
+    "sub_sections": [
+      {
+        "id": "section-2-subsection-1",
+        "order": 1,
+        "sub_section_name": "Passport Details",
+        "sub_section_info": "",
+        "questions": [
+          {
+            "id": "section-2-subsection-1-question-1",
+            "order": 1,
+            "question": "Passport Number",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-2-subsection-1-question-2",
+            "order": 2,
+            "question": "Place of Issue",
+            "question_info": "",
+            "type": "Input field",
+            "required": false
+          },
+          {
+            "id": "section-2-subsection-1-question-3",
+            "order": 3,
+            "question": "Date of Issue",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-2-subsection-1-question-4",
+            "order": 4,
+            "question": "Date of Expiry",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-2-subsection-1-question-5",
+            "order": 5,
+            "question": "Are you currently in Malaysia?",
+            "question_info": "",
+            "type": "Select",
+            "required": true,
+            "options": [
+              {
+                "label": "Yes",
+                "value": "yes"
+              },
+              {
+                "label": "No",
+                "value": "no"
+              }
+            ]
+          },
+          {
+            "id": "section-2-subsection-1-question-6",
+            "order": 6,
+            "question": "Choose your prefered Visa Collection Centre",
+            "question_info": "Visa With Reference (VDR) means a visa issued by the Malaysian Representative Office abroad to a non-citizen to enable individuals to enter Malaysia after the application is approved.\n\nPlease refer to the link below for Visa requirements according to the respective countries: https://www.imi.gov.my/index.php/en/main-services/visa/visa-requirement-by-country/",
+            "type": "Select",
+            "required": false,
+            "options": [
+              {
+                "label": "A very long list of embassies",
+                "value": "a_very_long_list_of_embassies"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "section-3",
+    "order": 3,
+    "section_name": "Academic",
+    "sub_sections": [
+      {
+        "id": "section-3-subsection-1",
+        "order": 1,
+        "sub_section_name": "Highest Academic Qualification",
+        "sub_section_info": "Please provide the highest academic qualification obtained.\n\nNote : Please be advised that all education details must be supported by final certificate obtained after graduation or provisional certificate with full transcript",
+        "questions": [
+          {
+            "id": "section-3-subsection-1-question-1",
+            "order": 1,
+            "question": "Qualification",
+            "question_info": "",
+            "type": "Select",
+            "required": true,
+            "options": [
+              {
+                "label": "Diploma",
+                "value": "diploma"
+              },
+              {
+                "label": "Honours Degree",
+                "value": "honours_degree"
+              },
+              {
+                "label": "Bachelor's Degree",
+                "value": "bachelor's_degree"
+              },
+              {
+                "label": "Master's Degree",
+                "value": "master's_degree"
+              },
+              {
+                "label": "Certificate",
+                "value": "certificate"
+              },
+              {
+                "label": "Ph.D",
+                "value": "ph.d"
+              },
+              {
+                "label": "Others",
+                "value": "others"
+              }
+            ]
+          },
+          {
+            "id": "section-3-subsection-1-question-2",
+            "order": 2,
+            "question": "University / College/ Provider",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-3-subsection-1-question-3",
+            "order": 3,
+            "question": "Major / Field",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-3-subsection-1-question-4",
+            "order": 4,
+            "question": "Country of Graduate",
+            "question_info": "",
+            "type": "Select",
+            "required": false,
+            "options": [
+              {
+                "label": "List of countries",
+                "value": "list_of_countries"
+              }
+            ]
+          },
+          {
+            "id": "section-3-subsection-1-question-5",
+            "order": 5,
+            "question": "Year of Graduation",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-3-subsection-1-question-6",
+            "order": 6,
+            "question": "Is the applicant a digital self learner?",
+            "question_info": "",
+            "type": "Select",
+            "required": false,
+            "options": [
+              {
+                "label": "Yes",
+                "value": "yes"
+              },
+              {
+                "label": "No",
+                "value": "no"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "section-4",
+    "order": 4,
+    "section_name": "Experience And Project",
+    "sub_sections": [
+      {
+        "id": "section-4-subsection-1",
+        "order": 1,
+        "sub_section_name": "Working Experience",
+        "sub_section_info": "Please provide your working experience details based on submitted resume",
+        "questions": [
+          {
+            "id": "section-4-subsection-1-question-1",
+            "order": 1,
+            "question": "Add Working Experience",
+            "question_info": "",
+            "type": "Input field",
+            "required": false
+          },
+          {
+            "id": "section-4-subsection-1-question-2",
+            "order": 2,
+            "question": "Organization",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-4-subsection-1-question-3",
+            "order": 3,
+            "question": "Position",
+            "question_info": "",
+            "type": "Select",
+            "required": true,
+            "options": [
+              {
+                "label": "List of positions",
+                "value": "list_of_positions"
+              }
+            ]
+          },
+          {
+            "id": "section-4-subsection-1-question-4",
+            "order": 4,
+            "question": "Date of Commenced",
+            "question_info": "",
+            "type": "Date Picker",
+            "required": true
+          },
+          {
+            "id": "section-4-subsection-1-question-5",
+            "order": 5,
+            "question": "Date of Resigned",
+            "question_info": "",
+            "type": "Date Picker",
+            "required": true
+          },
+          {
+            "id": "section-4-subsection-1-question-6",
+            "order": 6,
+            "question": "Brief Job Description",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "section-4-subsection-2",
+        "order": 2,
+        "sub_section_name": "Employment/Project Contract",
+        "sub_section_info": "Please provide your employment details or project contract details that are on-going and currently not started.",
+        "questions": [
+          {
+            "id": "section-4-subsection-2-question-1",
+            "order": 1,
+            "question": "Are you a technical or non-technical professional?",
+            "question_info": "",
+            "type": "Select",
+            "required": true,
+            "options": [
+              {
+                "label": "Yes",
+                "value": "yes"
+              },
+              {
+                "label": "No",
+                "value": "no"
+              }
+            ]
+          },
+          {
+            "id": "section-4-subsection-2-question-2",
+            "order": 2,
+            "question": "Duration of stay",
+            "question_info": "",
+            "type": "Select",
+            "required": true,
+            "options": [
+              {
+                "label": "3",
+                "value": "3"
+              },
+              {
+                "label": "6",
+                "value": "6"
+              },
+              {
+                "label": "9",
+                "value": "9"
+              },
+              {
+                "label": "12",
+                "value": "12"
+              },
+              {
+                "label": "(months)",
+                "value": "(months)"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "section-5",
+    "order": 5,
+    "section_name": "Sponsor",
+    "sub_sections": [
+      {
+        "id": "section-5-subsection-1",
+        "order": 1,
+        "sub_section_name": "Sponsor Details",
+        "sub_section_info": "",
+        "questions": [
+          {
+            "id": "section-5-subsection-1-question-1",
+            "order": 1,
+            "question": "Do you have a sponsor?",
+            "question_info": "",
+            "type": "Select",
+            "required": false,
+            "options": [
+              {
+                "label": "Yes",
+                "value": "yes"
+              },
+              {
+                "label": "No",
+                "value": "no"
+              }
+            ]
+          },
+          {
+            "id": "section-5-subsection-1-question-2",
+            "order": 2,
+            "question": "Organisation Name",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-5-subsection-1-question-3",
+            "order": 3,
+            "question": "Registration Of Company",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-5-subsection-1-question-4",
+            "order": 4,
+            "question": "Address Line 1",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-5-subsection-1-question-5",
+            "order": 5,
+            "question": "Address Line 2",
+            "question_info": "",
+            "type": "Input field",
+            "required": false
+          },
+          {
+            "id": "section-5-subsection-1-question-6",
+            "order": 6,
+            "question": "Country",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-5-subsection-1-question-7",
+            "order": 7,
+            "question": "State",
+            "question_info": "",
+            "type": "Select",
+            "required": false,
+            "options": [
+              {
+                "label": "List of Malaysian states",
+                "value": "list_of_malaysian_states"
+              }
+            ]
+          },
+          {
+            "id": "section-5-subsection-1-question-8",
+            "order": 8,
+            "question": "Postcode",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-5-subsection-1-question-9",
+            "order": 9,
+            "question": "Contact Number",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-5-subsection-1-question-10",
+            "order": 10,
+            "question": "Contact Person",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-5-subsection-1-question-11",
+            "order": 11,
+            "question": "Email",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "section-6",
+    "order": 6,
+    "section_name": "Dependant",
+    "sub_sections": [
+      {
+        "id": "section-6-subsection-1",
+        "order": 1,
+        "sub_section_name": "Dependant Detail",
+        "sub_section_info": "",
+        "questions": [
+          {
+            "id": "section-6-subsection-1-question-1",
+            "order": 1,
+            "question": "Do you bring any dependant(s)?",
+            "question_info": "",
+            "type": "Select",
+            "required": true,
+            "options": [
+              {
+                "label": "Yes",
+                "value": "yes"
+              },
+              {
+                "label": "No",
+                "value": "no"
+              }
+            ]
+          },
+          {
+            "id": "section-6-subsection-1-question-2",
+            "order": 2,
+            "question": "Passport Photo Required",
+            "question_info": "",
+            "type": "Upload",
+            "required": true
+          },
+          {
+            "id": "section-6-subsection-1-question-3",
+            "order": 3,
+            "question": "Name\n(as per Passport Machine Readable Zone)",
+            "question_info": "Applicant Name Requirement\nPlease provide the applicant's name as per in the Machine Readable Zone (MRZ) in the passport.\n\nName as per passport:   MERIOLES EMILE DON DIMAYUGA\nName as in the MRZ:      MERIOLES EMILE DON\nThe arrangement of name will appear in the sticker will follow as in the MRZ, Full Name.",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-6-subsection-1-question-4",
+            "order": 4,
+            "question": "Email",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-6-subsection-1-question-5",
+            "order": 5,
+            "question": "Gender",
+            "question_info": "",
+            "type": "Select",
+            "required": true,
+            "options": [
+              {
+                "label": "Male",
+                "value": "male"
+              },
+              {
+                "label": "Female",
+                "value": "female"
+              }
+            ]
+          },
+          {
+            "id": "section-6-subsection-1-question-6",
+            "order": 6,
+            "question": "Marital Status",
+            "question_info": "",
+            "type": "Select",
+            "required": true,
+            "options": [
+              {
+                "label": "MARRIED",
+                "value": "married"
+              },
+              {
+                "label": "SINGLE",
+                "value": "single"
+              },
+              {
+                "label": "WIDOWED",
+                "value": "widowed"
+              },
+              {
+                "label": "DIVORCED",
+                "value": "divorced"
+              }
+            ]
+          },
+          {
+            "id": "section-6-subsection-1-question-7",
+            "order": 7,
+            "question": "Nationality",
+            "question_info": "",
+            "type": "Select",
+            "required": true
+          },
+          {
+            "id": "section-6-subsection-1-question-8",
+            "order": 8,
+            "question": "Date of Birth",
+            "question_info": "",
+            "type": "Date Picker",
+            "required": true
+          },
+          {
+            "id": "section-6-subsection-1-question-9",
+            "order": 9,
+            "question": "Country of Birth",
+            "question_info": "",
+            "type": "Select",
+            "required": true
+          },
+          {
+            "id": "section-6-subsection-1-question-10",
+            "order": 10,
+            "question": "State of Birth",
+            "question_info": "",
+            "type": "Select",
+            "required": false
+          },
+          {
+            "id": "section-6-subsection-1-question-11",
+            "order": 11,
+            "question": "Passport Number",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-6-subsection-1-question-12",
+            "order": 12,
+            "question": "Place of Issue",
+            "question_info": "",
+            "type": "Input field",
+            "required": false
+          },
+          {
+            "id": "section-6-subsection-1-question-13",
+            "order": 13,
+            "question": "Date of Issue",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-6-subsection-1-question-14",
+            "order": 14,
+            "question": "Date of Expiry",
+            "question_info": "",
+            "type": "Input field",
+            "required": true
+          },
+          {
+            "id": "section-6-subsection-1-question-15",
+            "order": 15,
+            "question": "Period of stay",
+            "question_info": "",
+            "type": "Select",
+            "required": true,
+            "options": [
+              {
+                "label": "3",
+                "value": "3"
+              },
+              {
+                "label": "6",
+                "value": "6"
+              },
+              {
+                "label": "9",
+                "value": "9"
+              },
+              {
+                "label": "12",
+                "value": "12"
+              },
+              {
+                "label": "(months)",
+                "value": "(months)"
+              }
+            ]
+          },
+          {
+            "id": "section-6-subsection-1-question-16",
+            "order": 16,
+            "question": "Choose your prefered Visa Collection Centre",
+            "question_info": "Visa With Reference (VDR) means a visa issued by the Malaysian Representative Office abroad to a non-citizen to enable individuals to enter Malaysia after the application is approved.\n\nPlease refer to the link below for Visa requirements according to the respective countries: https://www.imi.gov.my/index.php/en/main-services/visa/visa-requirement-by-country/",
+            "type": "Select",
+            "required": false,
+            "options": [
+              {
+                "label": "A very long list of embassies",
+                "value": "a_very_long_list_of_embassies"
+              }
+            ]
+          },
+          {
+            "id": "section-6-subsection-1-question-17",
+            "order": 17,
+            "question": "Is the applicant currently in Malaysia?",
+            "question_info": "",
+            "type": "Select",
+            "required": true,
+            "options": [
+              {
+                "label": "Yes",
+                "value": "yes"
+              },
+              {
+                "label": "No",
+                "value": "no"
+              }
+            ]
+          },
+          {
+            "id": "section-6-subsection-1-question-18",
+            "order": 18,
+            "question": "Passport all pages (minimum of 6 empty pages)",
+            "question_info": "All pages of passport must be uploaded into ONE file.",
+            "type": "Upload",
+            "required": true
+          },
+          {
+            "id": "section-6-subsection-1-question-19",
+            "order": 19,
+            "question": "Proof of relationship documents",
+            "question_info": "Certified True Copy of marriage certificate (wife/husband) or birth certificate (children below 18 years old) by respective Embassy in Malaysia OR Malaysian Embassy/High Commission/Consulate General in the respective country. If in OTHER LANGUAGES, please translate it into English before certification by respective Embassy in Malaysia OR Malaysian Embassy in the respective country",
+            "type": "Upload",
+            "required": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "section-7",
+    "order": 7,
+    "section_name": "Supporting Documents",
+    "sub_sections": [
+      {
+        "id": "section-7-subsection-1",
+        "order": 1,
+        "sub_section_name": "Mandatory",
+        "sub_section_info": "(PDF, 20MB only)\nAll documents must be in English or translated into English",
+        "questions": [
+          {
+            "id": "section-7-subsection-1-question-1",
+            "order": 1,
+            "question": "Passport all pages (minimum of 6 empty pages)",
+            "question_info": "All pages of passport must be uploaded into ONE file.",
+            "type": "Upload",
+            "required": true
+          },
+          {
+            "id": "section-7-subsection-1-question-2",
+            "order": 2,
+            "question": "Latest Resume",
+            "question_info": "",
+            "type": "Upload",
+            "required": true
+          },
+          {
+            "id": "section-7-subsection-1-question-3",
+            "order": 3,
+            "question": "Latest 3 months bank statement and yearly income statement",
+            "question_info": "",
+            "type": "Upload",
+            "required": true
+          },
+          {
+            "id": "section-7-subsection-1-question-4",
+            "order": 4,
+            "question": "Active/not started project contract, purchase order and invoice",
+            "question_info": "",
+            "type": "Upload",
+            "required": true
+          },
+          {
+            "id": "section-7-subsection-1-question-5",
+            "order": 5,
+            "question": "Letter of good conduct (issued by authority body in respective country or current residence) or Statutory Declaration form",
+            "question_info": "The Statutory Declaration form must be certified by a Notary Public in your respective country\nPlease download the template here: https://malaysiadigital.mdec.my/DE_Rantau_Foreign/Document?eApplication_id=91HfFS4n1MVHaIJDl%2FDmg%2Bc0hkL6qE2MXw0PsaQ2GM5Pm5jFqzyOITg4iKW3priMyluzFblqISFkBfz6LyML8g%3D%3D#",
+            "type": "Upload",
+            "required": true
+          },
+          {
+            "id": "section-7-subsection-1-question-6",
+            "order": 6,
+            "question": "Personal Bond form",
+            "question_info": "Required steps\nSTEP 1 :Please download the templatehere(sample) https://malaysiadigital.mdec.my/DE_Rantau_Foreign/Document?eApplication_id=91HfFS4n1MVHaIJDl%2FDmg%2Bc0hkL6qE2MXw0PsaQ2GM5Pm5jFqzyOITg4iKW3priMyluzFblqISFkBfz6LyML8g%3D%3D# \nSTEP 2 :Fill up the respective information in the download form\nSTEP 3 :Affix the form with stamp duty and endorsed by Inland Revenue Board (IRB)\nSTEP 4 :Upload the signed form",
+            "type": "Upload",
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "section-7-subsection-2",
+        "order": 2,
+        "sub_section_name": "Others (Mandatory if Applicable)",
+        "sub_section_info": "(PDF, 20MB only)",
+        "questions": [
+          {
+            "id": "section-7-subsection-2-question-1",
+            "order": 1,
+            "question": "Health / Travel insurance policy cover",
+            "question_info": "Travel/Health insurance must be valid in Malaysia and must be covering you (and all your family members).\nYou may upload the health/travel insurance policy cover now or after the application has been approved.",
+            "type": "Upload",
+            "required": false
+          },
+          {
+            "id": "section-7-subsection-2-question-2",
+            "order": 2,
+            "question": "Highest Educational Certificates",
+            "question_info": "",
+            "type": "Upload",
+            "required": false
+          }
+        ]
+      }
+    ]
+  }
+]

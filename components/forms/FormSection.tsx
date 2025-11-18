@@ -26,6 +26,8 @@ interface FormSectionProps {
   formData: Record<string, string>;
   onChange: (questionId: string, value: string) => void;
   errors: Record<string, string>;
+  currentSection?: number;
+  totalSections?: number;
 }
 
 export const FormSection: React.FC<FormSectionProps> = ({
@@ -34,12 +36,25 @@ export const FormSection: React.FC<FormSectionProps> = ({
   formData,
   onChange,
   errors,
+  currentSection,
+  totalSections,
 }) => {
   return (
-    <div className="">
+    <div className="relative">
+      {/* Section Counter */}
+      
+
       <div className="text-center">
         <h2 className="text-3xl font-bold text-black">{sectionName}</h2>
       </div>
+
+      {currentSection !== undefined && totalSections !== undefined && (
+        <div className="lg:hidden absolute flex-col gap-1 top-4 right-4 flex items-end justify-end mb-4 ">
+            <span className="bg-red-600 rounded-full tracking-tight px-2 py-[2px] text-xs font-bold text-white w-fit">
+              Step {currentSection}/{totalSections}
+            </span>
+        </div>
+      )}
 
       {subSections
         .sort((a, b) => a.order - b.order)
