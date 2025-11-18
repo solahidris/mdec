@@ -7,7 +7,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Header } from "@/components/homepage/Header";
 import { Footer } from "@/components/homepage/Footer";
 import { FormSection } from "@/components/forms/FormSection";
-import { ArrowLeft, ArrowRight, CheckCircle, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle, Check, Settings } from "lucide-react";
+import mockData from "@/lib/data-sample/combined-mock-data.json";
 
 interface Section {
   id: string;
@@ -30,6 +31,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
   const [formData, setFormData] = useState<Record<string, string>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [adminMode, setAdminMode] = useState(false);
 
   const sections: Section[] = programData;
   const sortedSections = sections.sort((a, b) => a.order - b.order);
@@ -122,6 +124,30 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
     }
   };
 
+  const toggleAdminMode = () => {
+    if (!adminMode) {
+      // Enable admin mode and fill with mock data
+      // Map program names to mock data keys
+      const programKeyMap: Record<string, string> = {
+        "Expats": "expats",
+        "eXpats": "expats",
+        "DE Rantau": "de-rantau",
+        "MTEP": "mtep",
+        "Malaysia Tech Entrepreneur Programme": "mtep"
+      };
+      
+      const programKey = programKeyMap[programName] || programName.toLowerCase().replace(/\s+/g, "-");
+      const mockFormData = (mockData as any)[programKey] || {};
+      setFormData(mockFormData);
+      setAdminMode(true);
+    } else {
+      // Disable admin mode and clear the form
+      setFormData({});
+      setErrors({});
+      setAdminMode(false);
+    }
+  };
+
   if (submitted) {
     return (
       <Container>
@@ -160,13 +186,29 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
       <div className="min-h-screen">
         <div className="container mx-auto px-4 py-8 md:py-12">
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold text-black mb-4">
-              {programName} Application Form
-            </h1>
-            <p className="text-gray-600">
-              Please fill out all required fields to complete your application.
-            </p>
+          <div className="mb-8 flex justify-between items-start">
+            <div>
+              <h1 className="text-4xl font-bold text-black mb-4">
+                {programName} Application Form
+              </h1>
+              <p className="text-gray-600">
+                Please fill out all required fields to complete your application.
+              </p>
+            </div>
+            
+            {/* Admin Mode Toggle */}
+            <Button
+              onClick={toggleAdminMode}
+              variant={adminMode ? "default" : "outline"}
+              className={`cursor-pointer flex items-center gap-2 ${
+                adminMode
+                  ? "bg-purple-600 hover:bg-purple-700 text-white"
+                  : "border-purple-600 text-purple-600 hover:bg-purple-50"
+              }`}
+            >
+              <Settings className="h-4 w-4" />
+              {adminMode ? "Admin Mode: ON" : "Admin Mode: OFF"}
+            </Button>
           </div>
 
           {/* Stepper Navigation */}
