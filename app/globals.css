@@ -2,6 +2,8 @@
 /* LETS KEEP THE COLOR THEME MINIMAL FOR NOW  */
 
 @import "tailwindcss";
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
