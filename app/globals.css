@@ -19,6 +19,8 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -44,6 +46,10 @@
   /* light gray */
   --secondary-foreground: oklch(0 0 0);
   /* black */
+  --muted-foreground: oklch(0.5 0 0);
+  /* gray text */
+  --border: oklch(0.9 0 0);
+  /* light border */
 
   /* Sidebar colors */
   --sidebar: hsl(0 0% 98%);
@@ -65,6 +71,10 @@
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
+  --muted-foreground: oklch(0.6 0 0);
+  /* lighter gray for dark mode */
+  --border: oklch(0.25 0 0);
+  /* dark border */
 
   /* Dark mode sidebar colors */
   --sidebar: hsl(240 5.9% 10%);
