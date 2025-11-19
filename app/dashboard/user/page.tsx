@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { DashboardTopBar } from "@/components/dashboard/DashboardTopBar";
 import { Button } from "@/components/ui/button";
@@ -41,9 +42,13 @@ interface Application {
 }
 
 const UserDashboard = () => {
+  const router = useRouter();
   // For user dashboard, we'll simulate showing only their own applications
   // In a real app, this would be filtered by the logged-in user's ID
-  const userApplications = applicationsData.applications.slice(0, 3) as Application[];
+  const userApplications = applicationsData.applications.slice(
+    0,
+    3
+  ) as Application[];
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
 
   // Calculate statistics for user's applications
@@ -52,7 +57,8 @@ const UserDashboard = () => {
     pending: userApplications.filter(
       (app) => app.status === "submitted" || app.status === "under-review"
     ).length,
-    approved: userApplications.filter((app) => app.status === "approved").length,
+    approved: userApplications.filter((app) => app.status === "approved")
+      .length,
     actionRequired: userApplications.filter(
       (app) => app.status === "documents-pending"
     ).length,
@@ -101,7 +107,7 @@ const UserDashboard = () => {
             { label: "Dashboard", href: "/dashboard/user" },
           ]}
         />
-        <div className="flex-1 overflow-y-auto bg-gray-50/50">
+        <div className="flex-1 overflow-y-auto bg-zinc-100">
           <div className="p-8 max-w-7xl mx-auto space-y-8">
             {/* Welcome Banner */}
             <div className="p-8 bg-gradient-to-r from-primary to-primary/90 text-white rounded-xl shadow-sm">
@@ -113,14 +119,16 @@ const UserDashboard = () => {
 
             {/* Statistics Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all">
+              <Card className="bg-white border-0 shadow-sm hover:shadow-md transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between">
                     <div>
                       <p className="text-sm font-medium text-gray-600 mb-2">
                         Total Applications
                       </p>
-                      <h3 className="text-3xl font-semibold text-gray-900">{stats.total}</h3>
+                      <h3 className="text-3xl font-semibold text-gray-900">
+                        {stats.total}
+                      </h3>
                     </div>
                     <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-blue-50">
                       <FileText className="h-6 w-6 text-blue-600" />
@@ -129,14 +137,16 @@ const UserDashboard = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all">
+              <Card className="bg-white border-0 shadow-sm hover:shadow-md transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between">
                     <div>
                       <p className="text-sm font-medium text-gray-600 mb-2">
                         Pending Review
                       </p>
-                      <h3 className="text-3xl font-semibold text-gray-900">{stats.pending}</h3>
+                      <h3 className="text-3xl font-semibold text-gray-900">
+                        {stats.pending}
+                      </h3>
                     </div>
                     <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-yellow-50">
                       <Clock className="h-6 w-6 text-yellow-600" />
@@ -145,14 +155,16 @@ const UserDashboard = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all">
+              <Card className="bg-white border-0 shadow-sm hover:shadow-md transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between">
                     <div>
                       <p className="text-sm font-medium text-gray-600 mb-2">
                         Approved
                       </p>
-                      <h3 className="text-3xl font-semibold text-gray-900">{stats.approved}</h3>
+                      <h3 className="text-3xl font-semibold text-gray-900">
+                        {stats.approved}
+                      </h3>
                     </div>
                     <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-green-50">
                       <CheckCircle className="h-6 w-6 text-green-600" />
@@ -161,14 +173,16 @@ const UserDashboard = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all">
+              <Card className="bg-white border-0 shadow-sm hover:shadow-md transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between">
                     <div>
                       <p className="text-sm font-medium text-gray-600 mb-2">
                         Action Required
                       </p>
-                      <h3 className="text-3xl font-semibold text-gray-900">{stats.actionRequired}</h3>
+                      <h3 className="text-3xl font-semibold text-gray-900">
+                        {stats.actionRequired}
+                      </h3>
                     </div>
                     <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-orange-50">
                       <AlertCircle className="h-6 w-6 text-orange-600" />
@@ -178,36 +192,82 @@ const UserDashboard = () => {
               </Card>
             </div>
 
-            {/* Quick Actions */}
-            <div className="p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-medium text-gray-900">Quick Actions</h3>
-                <div className="flex gap-3">
-                  <Button className="gap-2 h-9">
-                    <Plus className="h-4 w-4" />
-                    New Application
-                  </Button>
-                  <Button variant="outline" className="gap-2 h-9 border-gray-200">
-                    <FileCheck className="h-4 w-4" />
-                    Upload Documents
-                  </Button>
-                </div>
-              </div>
-            </div>
+            {/* Action Required */}
+            <Card className="bg-white border-0 shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-lg font-medium text-gray-900 flex items-center gap-2">
+                  <AlertCircle className="h-5 w-5 text-orange-600" />
+                  Action Required
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {stats.actionRequired === 0 ? (
+                  <div className="text-center py-4">
+                    <CheckCircle className="h-10 w-10 text-green-600 mx-auto mb-3" />
+                    <p className="text-base font-medium text-gray-900 mb-1">
+                      You're all good for now!
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      No pending actions required on your applications
+                    </p>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {userApplications
+                      .filter((app) => app.status === "documents-pending")
+                      .map((app) => (
+                        <div
+                          key={app.id}
+                          className="flex items-center justify-between p-4 bg-orange-50 rounded-lg border border-orange-100"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-orange-100">
+                              <FileCheck className="h-5 w-5 text-orange-600" />
+                            </div>
+                            <div>
+                              <p className="font-medium text-gray-900">
+                                {app.programme} Application
+                              </p>
+                              <p className="text-sm text-gray-600">
+                                Documents pending for {app.company}
+                              </p>
+                            </div>
+                          </div>
+                          <Button size="sm" className="gap-2">
+                            <FileCheck className="h-4 w-4" />
+                            Upload Documents
+                          </Button>
+                        </div>
+                      ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
 
             {/* Programme Filter */}
             <div>
               <Tabs defaultValue="all" className="w-full">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-semibold text-gray-900">My Applications</h2>
-                  <TabsList className="bg-white border shadow-sm p-1.5 gap-1">
-                    <TabsTrigger value="all" onClick={() => setSelectedFilter("all")}>
+                  <h2 className="text-2xl font-semibold text-gray-900">
+                    My Applications
+                  </h2>
+                  <TabsList className="bg-white border shadow-sm px-1.5 gap-1">
+                    <TabsTrigger
+                      value="all"
+                      onClick={() => setSelectedFilter("all")}
+                    >
                       All Programmes
                     </TabsTrigger>
-                    <TabsTrigger value="expats" onClick={() => setSelectedFilter("expats")}>
+                    <TabsTrigger
+                      value="expats"
+                      onClick={() => setSelectedFilter("expats")}
+                    >
                       Expats
                     </TabsTrigger>
-                    <TabsTrigger value="mtep" onClick={() => setSelectedFilter("mtep")}>
+                    <TabsTrigger
+                      value="mtep"
+                      onClick={() => setSelectedFilter("mtep")}
+                    >
                       MTEP
                     </TabsTrigger>
                     <TabsTrigger
@@ -221,15 +281,18 @@ const UserDashboard = () => {
               </Tabs>
             </div>
 
-            {/* Applications List */}
+            {/* Applications List - Horizontal Scroll */}
             <div className="space-y-5">
               {filteredApplications.length === 0 ? (
-                <Card className="bg-white shadow-sm border border-gray-200">
+                <Card className="bg-white shadow-sm border-0">
                   <CardContent className="p-12 text-center">
                     <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium mb-2 text-gray-900">No applications found</h3>
+                    <h3 className="text-lg font-medium mb-2 text-gray-900">
+                      No applications found
+                    </h3>
                     <p className="text-gray-600 mb-4">
-                      You haven't submitted any applications yet. Start your journey with MDEC!
+                      You haven't submitted any applications yet. Start your
+                      journey with MDEC!
                     </p>
                     <Button className="gap-2">
                       <Plus className="h-4 w-4" />
@@ -238,96 +301,142 @@ const UserDashboard = () => {
                   </CardContent>
                 </Card>
               ) : (
-                filteredApplications.map((application) => (
-                  <Card
-                    key={application.id}
-                    className="bg-white shadow-sm border border-gray-200 hover:shadow-md transition-all duration-200"
-                  >
-                    <CardHeader className="pb-4">
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <CardTitle className="text-xl mb-2 text-gray-900">
-                            {application.programme} Application
-                          </CardTitle>
-                          <p className="text-sm text-gray-500">
-                            Application ID: {application.id}
-                          </p>
-                        </div>
-                        <Badge className={getStatusColor(application.status) + " font-medium"}>
-                          {getStatusLabel(application.status)}
-                        </Badge>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
-                        <div className="flex items-center gap-2.5 text-sm">
-                          <Building2 className="h-4 w-4 text-gray-400" />
-                          <div>
-                            <p className="text-xs text-gray-500">Company</p>
-                            <p className="font-medium text-gray-900">{application.company}</p>
+                <div className="overflow-x-auto pb-4 -mx-8 px-8">
+                  <div className="flex gap-6 min-w-min">
+                    {filteredApplications.map((application) => (
+                      <Card
+                        key={application.id}
+                        className="bg-white shadow-sm border-0 hover:shadow-lg transition-all duration-200 flex-shrink-0 w-[380px] flex flex-col"
+                      >
+                        <CardHeader className="pb-0">
+                          <div className="flex items-start justify-between mb-3">
+                            <div className="flex-1">
+                              <CardTitle className="text-xl mb-2 text-gray-900">
+                                {application.programme}
+                              </CardTitle>
+                              <p className="text-xs text-gray-500">
+                                {application.id}
+                              </p>
+                            </div>
+                            <Badge
+                              className={
+                                getStatusColor(application.status) +
+                                " font-medium text-xs"
+                              }
+                            >
+                              {getStatusLabel(application.status)}
+                            </Badge>
                           </div>
-                        </div>
-                        <div className="flex items-center gap-2.5 text-sm">
-                          <Briefcase className="h-4 w-4 text-gray-400" />
-                          <div>
-                            <p className="text-xs text-gray-500">Position</p>
-                            <p className="font-medium text-gray-900">{application.position}</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2.5 text-sm">
-                          <Globe2 className="h-4 w-4 text-gray-400" />
-                          <div>
-                            <p className="text-xs text-gray-500">Nationality</p>
-                            <p className="font-medium text-gray-900">{application.nationality}</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2.5 text-sm">
-                          <Calendar className="h-4 w-4 text-gray-400" />
-                          <div>
-                            <p className="text-xs text-gray-500">Submitted</p>
-                            <p className="font-medium text-gray-900">
-                              {new Date(application.submittedDate).toLocaleDateString(
-                                "en-US",
-                                {
-                                  month: "short",
-                                  day: "numeric",
-                                  year: "numeric",
-                                }
-                              )}
+                          <div className="pt-6 border-t">
+                            <p className="text-sm font-medium text-gray-900">
+                              {application.applicantName}
                             </p>
                           </div>
-                        </div>
-                      </div>
-                      <div className="flex gap-3">
-                        <Button variant="outline" className="gap-2 border-gray-200 h-9">
-                          <Eye className="h-4 w-4" />
-                          View Details
-                        </Button>
-                        {application.status === "documents-pending" && (
-                          <Button variant="default" className="gap-2 h-9">
-                            <FileCheck className="h-4 w-4" />
-                            Upload Documents
-                          </Button>
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))
+                        </CardHeader>
+                        <CardContent className="flex flex-col flex-grow">
+                          <div className="space-y-3 flex-grow">
+                            <div className="flex items-start gap-3">
+                              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-50 shrink-0">
+                                <Building2 className="h-4 w-4 text-gray-600" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-xs text-gray-500">Company</p>
+                                <p className="font-medium text-sm text-gray-900 truncate">
+                                  {application.company}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-start gap-3">
+                              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-50 shrink-0">
+                                <Briefcase className="h-4 w-4 text-gray-600" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-xs text-gray-500">
+                                  Position
+                                </p>
+                                <p className="font-medium text-sm text-gray-900 truncate">
+                                  {application.position}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-start gap-3">
+                              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-50 shrink-0">
+                                <Globe2 className="h-4 w-4 text-gray-600" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-xs text-gray-500">
+                                  Nationality
+                                </p>
+                                <p className="font-medium text-sm text-gray-900">
+                                  {application.nationality}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-start gap-3">
+                              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-50 shrink-0">
+                                <Calendar className="h-4 w-4 text-gray-600" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-xs text-gray-500">
+                                  Submitted
+                                </p>
+                                <p className="font-medium text-sm text-gray-900">
+                                  {new Date(
+                                    application.submittedDate
+                                  ).toLocaleDateString("en-US", {
+                                    month: "short",
+                                    day: "numeric",
+                                    year: "numeric",
+                                  })}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex flex-col gap-2.5 pt-4 mt-4">
+                            <Button
+                              variant="default"
+                              className="cursor-pointer gap-2 w-full"
+                              onClick={() =>
+                                router.push(
+                                  `/dashboard/user/application/${application.id}`
+                                )
+                              }
+                            >
+                              <Eye className="h-4 w-4" />
+                              View Details
+                            </Button>
+                            {application.status === "documents-pending" && (
+                              <Button
+                                variant="outline"
+                                className="cursor-pointer gap-2 w-full border-gray-200"
+                              >
+                                <FileCheck className="h-4 w-4" />
+                                Upload Documents
+                              </Button>
+                            )}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
               )}
             </div>
 
             {/* Help Section */}
-            <Card className="bg-blue-50/50 border-blue-100">
+            <Card className="bg-blue-50">
               <CardContent className="p-6">
                 <h3 className="text-lg font-medium mb-2 flex items-center gap-2 text-gray-900">
                   <AlertCircle className="h-5 w-5 text-blue-600" />
                   Need Help?
                 </h3>
                 <p className="text-sm text-gray-600 mb-4">
-                  If you have any questions about your application or need assistance,
-                  please don't hesitate to contact us.
+                  If you have any questions about your application or need
+                  assistance, please don't hesitate to contact us.
                 </p>
-                <Button variant="outline" className="border-gray-200">Contact Support</Button>
+                <Button variant="outline" className="border-gray-200">
+                  Contact Support
+                </Button>
               </CardContent>
             </Card>
           </div>
@@ -338,4 +447,3 @@ const UserDashboard = () => {
 };
 
 export default UserDashboard;
-

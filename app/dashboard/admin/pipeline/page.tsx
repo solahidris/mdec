@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { DashboardTopBar } from "@/components/dashboard/DashboardTopBar";
 import { DashboardStatCard } from "@/components/dashboard/DashboardStatCard";
@@ -28,6 +29,7 @@ import {
 import applicationsData from "@/lib/data-sample/dashboard-applications.json";
 
 const PipelinePage = () => {
+  const router = useRouter();
   const applications = applicationsData.applications as Application[];
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
 
@@ -68,9 +70,7 @@ const PipelinePage = () => {
   };
 
   const handleViewDetails = (id: string) => {
-    console.log("View details for application:", id);
-    // You can implement a modal or navigation to details page here
-    alert(`Viewing details for ${id}`);
+    router.push(`/dashboard/user/application/${id}`);
   };
 
   return (
@@ -145,7 +145,6 @@ const PipelinePage = () => {
                   onClick={() => setSelectedFilter("expats")}
                   className="gap-2"
                 >
-                  <Users className="h-4 w-4" />
                   Expats
                 </TabsTrigger>
                 <TabsTrigger
@@ -153,7 +152,6 @@ const PipelinePage = () => {
                   onClick={() => setSelectedFilter("mtep")}
                   className="gap-2"
                 >
-                  <Rocket className="h-4 w-4" />
                   MTEP
                 </TabsTrigger>
                 <TabsTrigger
@@ -161,7 +159,6 @@ const PipelinePage = () => {
                   onClick={() => setSelectedFilter("de rantau")}
                   className="gap-2"
                 >
-                  <Plane className="h-4 w-4" />
                   DE Rantau
                 </TabsTrigger>
               </TabsList>

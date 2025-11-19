@@ -62,16 +62,20 @@ const Dashboard = () => {
         <div className="flex-1 overflow-y-auto bg-zinc-100">
           <div className="p-8 max-w-[1800px] mx-auto space-y-8">
             {/* Welcome Section */}
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg p-8 text-white">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h1 className="text-3xl font-bold mb-2">Welcome back, Admin!</h1>
-                  <p className="text-blue-100 text-lg">
-                    Here's what's happening with your programmes today
-                  </p>
-                </div>
-                <div className="hidden md:block">
-                  <Calendar className="h-20 w-20 text-blue-200" />
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-600 via-red-500 to-red-700 shadow-lg">
+              <div className="p-8">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h1 className="text-3xl font-bold mb-2 text-white">
+                      Welcome back, Admin!
+                    </h1>
+                    <p className="text-white/90 text-lg font-light">
+                      Here's what's happening with your programmes today
+                    </p>
+                  </div>
+                  <div className="hidden md:block">
+                    <Calendar className="h-16 w-16 text-white stroke-[1.5]" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -137,7 +141,7 @@ const Dashboard = () => {
                     </div>
                     <div className="pt-4">
                       <Button variant="outline" className="w-full gap-2" asChild>
-                        <Link href="/dashboard/admin/pipeline">
+                        <Link href="/dashboard/admin/forms?programme=expats">
                           View Details
                           <ArrowRight className="h-4 w-4" />
                         </Link>
@@ -166,7 +170,7 @@ const Dashboard = () => {
                     </div>
                     <div className="pt-4">
                       <Button variant="outline" className="w-full gap-2" asChild>
-                        <Link href="/dashboard/admin/pipeline">
+                        <Link href="/dashboard/admin/forms?programme=mtep">
                           View Details
                           <ArrowRight className="h-4 w-4" />
                         </Link>
@@ -195,7 +199,7 @@ const Dashboard = () => {
                     </div>
                     <div className="pt-4">
                       <Button variant="outline" className="w-full gap-2" asChild>
-                        <Link href="/dashboard/admin/pipeline">
+                        <Link href="/dashboard/admin/forms?programme=derantau">
                           View Details
                           <ArrowRight className="h-4 w-4" />
                         </Link>

@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   FileText,
@@ -55,12 +56,6 @@ const mainMenuItems = [
     active: true,
   },
   {
-    title: "All Applications",
-    url: "#",
-    icon: FileText,
-    active: false,
-  },
-  {
     title: "Analytics",
     url: "#",
     icon: BarChart3,
@@ -71,21 +66,21 @@ const mainMenuItems = [
 const programmeItems = [
   {
     title: "Expats Programme",
-    url: "#",
+    url: "/dashboard/admin/forms?programme=expats",
     icon: Users,
-    active: false,
+    active: true,
   },
   {
     title: "MTEP Programme",
-    url: "#",
+    url: "/dashboard/admin/forms?programme=mtep",
     icon: Rocket,
-    active: false,
+    active: true,
   },
   {
     title: "DE Rantau Programme",
-    url: "#",
+    url: "/dashboard/admin/forms?programme=derantau",
     icon: Plane,
-    active: false,
+    active: true,
   },
 ];
 
@@ -112,6 +107,10 @@ const settingsItems = [
 ];
 
 export function AppSidebar() {
+  const pathname = usePathname();
+  const isUserDashboard = pathname?.startsWith("/dashboard/user");
+  const isAdminDashboard = pathname?.startsWith("/dashboard/admin");
+
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -119,11 +118,11 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <Link href="/">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                <div className="flex aspect-square size-10 items-center justify-center rounded-lg">
                   <img
                     src="/logo/logo-favi.png"
                     alt="MDEC"
-                    className="size-6 rounded-lg"
+                    className="size-10 rounded-lg shadow"
                   />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
@@ -144,23 +143,29 @@ export function AppSidebar() {
           <SidebarGroupLabel>Main Navigation</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {mainMenuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  {item.active ? (
-                    <SidebarMenuButton asChild>
-                      <Link href={item.url}>
+              {mainMenuItems.map((item) => {
+                // Pipeline should only be active on admin dashboard
+                const isPipelineItem = item.title === "Pipeline";
+                const isActive = isPipelineItem ? (item.active && isAdminDashboard) : item.active;
+                
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    {isActive ? (
+                      <SidebarMenuButton asChild>
+                        <Link href={item.url}>
+                          <item.icon />
+                          <span>{item.title}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    ) : (
+                      <SidebarMenuButton disabled className="opacity-50 cursor-not-allowed">
                         <item.icon />
                         <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  ) : (
-                    <SidebarMenuButton disabled className="opacity-50 cursor-not-allowed">
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </SidebarMenuButton>
-                  )}
-                </SidebarMenuItem>
-              ))}
+                      </SidebarMenuButton>
+                    )}
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -170,23 +175,28 @@ export function AppSidebar() {
           <SidebarGroupLabel>Programmes</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {programmeItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  {item.active ? (
-                    <SidebarMenuButton asChild>
-                      <Link href={item.url}>
+              {programmeItems.map((item) => {
+                // Programme items should only be active on admin dashboard
+                const isActive = item.active && isAdminDashboard;
+                
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    {isActive ? (
+                      <SidebarMenuButton asChild>
+                        <Link href={item.url}>
+                          <item.icon />
+                          <span>{item.title}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    ) : (
+                      <SidebarMenuButton disabled className="opacity-30 cursor-not-allowed">
                         <item.icon />
                         <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  ) : (
-                    <SidebarMenuButton disabled className="opacity-30 cursor-not-allowed">
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </SidebarMenuButton>
-                  )}
-                </SidebarMenuItem>
-              ))}
+                      </SidebarMenuButton>
+                    )}
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -233,9 +243,9 @@ export function AppSidebar() {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="/dashboard">
+                  <Link href={isUserDashboard ? "/dashboard/admin" : "/dashboard/user"}>
                     <LayoutDashboard />
-                    <span>User Dashboard</span>
+                    <span>{isUserDashboard ? "Admin Dashboard" : "User Dashboard"}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
