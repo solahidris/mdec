@@ -1,0 +1,5 @@
+{
+  "title": "Expats Service",
+  "pages": ["index", "md-companies", "non-md-companies"],
+  "defaultOpen": false
+}
