@@ -38,7 +38,7 @@
   /* white */
   --foreground: oklch(0 0 0);
   /* black */
-  --primary: oklch(0.45 0.44 29);
+  --primary: oklch(0.5798 0.2339 24);
   /* red - MDEC brand color */
   --primary-foreground: oklch(1 0 0);
   /* white text on red */
