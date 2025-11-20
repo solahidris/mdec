@@ -498,3 +498,4 @@ const ApplicationDetail = () => {
 
 export default ApplicationDetail;
 
+
