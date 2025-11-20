@@ -27,7 +27,7 @@ import { ArrowUp, Square, Loader2, Book } from "lucide-react";
 
 const SUGGESTED_QUESTIONS = [
   "What are the eligibility requirements for MTEP?",
-  "How do I apply for DE Rantau?",
+  "How do I apply for DE Rantau as a foreigner?",
   "What documents do I need for Expats service as an MD company?",
 ] as const;
 
