@@ -13,7 +13,6 @@ import {
   FileText,
   Clock,
   CheckCircle,
-  XCircle,
   Calendar,
   Building2,
   Briefcase,
@@ -205,7 +204,7 @@ const UserDashboard = () => {
                   <div className="text-center py-4">
                     <CheckCircle className="h-10 w-10 text-green-600 mx-auto mb-3" />
                     <p className="text-base font-medium text-gray-900 mb-1">
-                      You're all good for now!
+                      You&apos;re all good for now!
                     </p>
                     <p className="text-sm text-gray-600">
                       No pending actions required on your applications
@@ -291,7 +290,7 @@ const UserDashboard = () => {
                       No applications found
                     </h3>
                     <p className="text-gray-600 mb-4">
-                      You haven't submitted any applications yet. Start your
+                      You haven&apos;t submitted any applications yet. Start your
                       journey with MDEC!
                     </p>
                     <Button className="gap-2">
@@ -432,7 +431,7 @@ const UserDashboard = () => {
                 </h3>
                 <p className="text-sm text-gray-600 mb-4">
                   If you have any questions about your application or need
-                  assistance, please don't hesitate to contact us.
+                  assistance, please don&apos;t hesitate to contact us.
                 </p>
                 <Button variant="outline" className="border-gray-200">
                   Contact Support

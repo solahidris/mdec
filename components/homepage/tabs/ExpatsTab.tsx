@@ -1,14 +1,11 @@
 "use client";
 
 import { TabsContent } from "@/components/ui/tabs";
-import { FileCheck, HeartHandshake, Shield, Briefcase, Target } from "lucide-react";
+import { FileCheck, HeartHandshake, Shield, Briefcase, Target, Users } from "lucide-react";
 import { ProgrammeHeader } from "../ProgrammeHeader";
 import { FeatureCard } from "../FeatureCard";
 import { EligibilitySection } from "../EligibilitySection";
-import { Users } from "lucide-react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 export const ExpatsTab = () => {
   return (

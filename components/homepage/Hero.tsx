@@ -27,7 +27,7 @@ export const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
           >
-            Leading Malaysia's Digital Economy
+            Leading Malaysia&apos;s Digital Economy
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -36,7 +36,7 @@ export const Hero = () => {
             className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed"
           >
             Empowering tech talent, entrepreneurs, and digital nomads to
-            thrive in Southeast Asia's fastest-growing digital ecosystem
+            thrive in Southeast Asia&apos;s fastest-growing digital ecosystem
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

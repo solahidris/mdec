@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-import { Separator } from "@/components/ui/separator";
 import {
   ArrowLeft,
   Calendar,
@@ -25,9 +24,6 @@ import {
   Upload,
   MessageSquare,
   User,
-  MapPin,
-  Banknote,
-  FileCheck,
   XCircle,
 } from "lucide-react";
 
@@ -83,7 +79,7 @@ const ApplicationDetail = () => {
               <AlertCircle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">Application Not Found</h3>
               <p className="text-gray-600 mb-4">
-                The application you're looking for doesn't exist.
+                The application you&apos;re looking for doesn&apos;t exist.
               </p>
               <Button onClick={() => router.push("/dashboard/user")}>
                 <ArrowLeft className="h-4 w-4 mr-2" />

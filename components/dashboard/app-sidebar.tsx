@@ -4,14 +4,12 @@ import * as React from "react";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
-  FileText,
   Users,
   Rocket,
   Plane,
   BarChart3,
   Settings,
   Bell,
-  Search,
   HelpCircle,
   LogOut,
   ChevronUp,

@@ -4,8 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { DashboardTopBar } from "@/components/dashboard/DashboardTopBar";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { Card } from "@/components/ui/card";
 import {

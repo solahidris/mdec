@@ -14,8 +14,6 @@ import { ProgrammeHeader } from "../ProgrammeHeader";
 import { ProgrammeCard } from "../ProgrammeCard";
 import { BenefitItem } from "../BenefitItem";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 export const MTEPTab = () => {
   return (

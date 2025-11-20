@@ -6,7 +6,6 @@ import { Footer } from "@/components/homepage/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const AboutPage = () => {
   return (
@@ -56,16 +55,16 @@ const AboutPage = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-primary text-xl md:text-2xl text-center font-semibold mb-8 uppercase pt-16">
-              LEADING MALAYSIA'S DIGITAL ECONOMY
+              LEADING MALAYSIA&apos;S DIGITAL ECONOMY
             </h2>
             <div className="text-black text-base leading-relaxed space-y-4">
               <p>
                 Malaysia Digital Economy Corporation (MDEC), a government agency under the purview 
-                of the Ministry of Digital, was established in 1996 to lead Malaysia's digital 
+                of the Ministry of Digital, was established in 1996 to lead Malaysia&apos;s digital 
                 economy. Beginning with the implementation of the MSC Malaysia initiative, we have 
                 since then catalysed digital transformation and growth all over the nation. By 
                 offering greater incentives and governance for growth and re-investment, we aspire 
-                to bolster Malaysia's status as the digital hub of ASEAN, opening new doors and 
+                to bolster Malaysia&apos;s status as the digital hub of ASEAN, opening new doors and 
                 driving shared prosperity for all Malaysians.
               </p>
               <p>
@@ -151,7 +150,7 @@ const AboutPage = () => {
             </div>
             <div className="md:col-span-4">
               <p className="mb-2 text-lg uppercase text-primary font-semibold">
-                LET'S LEARN ABOUT
+                LET&apos;S LEARN ABOUT
               </p>
               <p className="mb-4 text-3xl md:text-4xl font-light uppercase">
                 Malaysia Digital
@@ -180,7 +179,7 @@ const AboutPage = () => {
                 Brand Book
               </h3>
               <p className="text-base leading-relaxed mb-8">
-                Download our brand guideline that covers MDEC's visual identity, dos and don'ts 
+                Download our brand guideline that covers MDEC&apos;s visual identity, dos and don&apos;ts 
                 and best practices for our brand. For the usage of our brand assets, kindly 
                 request the permission to{" "}
                 <a href="mailto:clic@mdec.com.my" className="text-blue-600 hover:underline">
@@ -248,7 +247,7 @@ const AboutPage = () => {
               Come Work With Us
             </h2>
             <p className="text-base md:text-lg text-black mb-8 max-w-2xl mx-auto">
-              Come and be part of the team. Together, we can shape Malaysia's digital future.
+              Come and be part of the team. Together, we can shape Malaysia&apos;s digital future.
             </p>
             <Button
               size="lg"

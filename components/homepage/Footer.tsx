@@ -14,7 +14,7 @@ export const Footer = () => {
               className="h-12 w-auto mb-4"
             />
             <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
-              Malaysia Digital Economy Corporation driving the nation's
+              Malaysia Digital Economy Corporation driving the nation&apos;s
               digital transformation
             </p>
             {/* Social Media Links */}

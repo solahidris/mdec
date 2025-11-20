@@ -5,13 +5,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { 
   Calendar, 
-  Mail, 
-  Phone, 
   Briefcase, 
   Building2, 
   Globe2, 
   Eye,
-  AlertCircle,
   FileText
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -35,11 +32,11 @@ interface KanbanCardProps {
   onViewDetails?: (id: string) => void;
 }
 
-const priorityColors = {
-  high: "bg-red-100 text-red-800 border-red-200",
-  medium: "bg-yellow-100 text-yellow-800 border-yellow-200",
-  low: "bg-green-100 text-green-800 border-green-200",
-};
+// const priorityColors = {
+//   high: "bg-red-100 text-red-800 border-red-200",
+//   medium: "bg-yellow-100 text-yellow-800 border-yellow-200",
+//   low: "bg-green-100 text-green-800 border-green-200",
+// };
 
 const programmeColors = {
   Expats: "bg-blue-50 text-blue-700 border-blue-200",
@@ -61,11 +58,11 @@ const programmeInitials = {
   "DE Rantau": "D",
 };
 
-const programmeCircleColors = {
-  Expats: "border-blue-500 text-blue-600",
-  MTEP: "border-purple-500 text-purple-600",
-  "DE Rantau": "border-orange-500 text-orange-600",
-};
+// const programmeCircleColors = {
+//   Expats: "border-blue-500 text-blue-600",
+//   MTEP: "border-purple-500 text-purple-600",
+//   "DE Rantau": "border-orange-500 text-orange-600",
+// };
 
 export const KanbanCard = ({ application, onViewDetails }: KanbanCardProps) => {
   return (

@@ -72,7 +72,7 @@ const ContactPage = () => {
               Contact Us
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-              Get in touch with MDEC. We're here to help with your enquiries about our programmes, services, and initiatives.
+              Get in touch with MDEC. We&apos;re here to help with your enquiries about our programmes, services, and initiatives.
             </p>
           </div>
         </div>
@@ -88,7 +88,7 @@ const ContactPage = () => {
           <SectionHeader
             badge="Contact Form"
             title="Get In Touch"
-            description="Fill out the form below and we'll get back to you as soon as possible"
+            description="Fill out the form below and we&apos;ll get back to you as soon as possible"
           />
 
           <Card className="p-8 md:p-12 bg-gray-50 border-gray-200">
@@ -255,17 +255,17 @@ const ContactPage = () => {
                     <label htmlFor="pdpa" className="text-sm cursor-pointer">
                       I hereby grant consent to Malaysia Digital Economy Corporation
                       Sdn. Bhd. (MDEC) to process the personal data provided in this
-                      Contact Us Form or to be provided in relation to this Contact Us
-                      Form, for the purpose of my enquiries related to MDEC's
+                      Contact Us                       Form or to be provided in relation to this Contact Us
+                      Form, for the purpose of my enquiries related to MDEC&apos;s
                       initiatives / programmes / services and in the manner set out in{" "}
                       <a
                         href="/footer-pages/personal-data-protection"
                         target="_blank"
                         className="text-primary underline font-semibold hover:text-red-700"
                       >
-                        MDEC's Personal Data Protection Statement
+                        MDEC&apos;s Personal Data Protection Statement
                       </a>
-                      . I have read and understood the aforesaid MDEC's Personal Data
+                      . I have read and understood the aforesaid MDEC&apos;s Personal Data
                       Protection Statement and agreed to the processing of such
                       personal data by MDEC in the manner set out therein.
                       <span className="text-red-600 ml-1">*</span>

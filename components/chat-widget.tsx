@@ -161,8 +161,8 @@ export function ChatWidget() {
                               toolInvocation.state === "result" ||
                               toolInvocation.state === "output-available" ||
                               toolInvocation.state === "done"; // "done" seen in logs for step-start/end but checking just in case
-                            const args =
-                              toolInvocation.args || toolInvocation.input || {};
+                            // const args =
+                            //   toolInvocation.args || toolInvocation.input || {};
                             const result =
                               toolInvocation.result || toolInvocation.output;
 

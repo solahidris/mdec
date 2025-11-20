@@ -70,7 +70,7 @@ const Dashboard = () => {
                       Welcome back, Admin!
                     </h1>
                     <p className="text-white/90 text-lg font-light">
-                      Here's what's happening with your programmes today
+                      Here&apos;s what&apos;s happening with your programmes today
                     </p>
                   </div>
                   <div className="hidden md:block">

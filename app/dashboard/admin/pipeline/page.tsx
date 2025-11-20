@@ -11,13 +11,9 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import {
-  FileText,
   Clock,
   CheckCircle,
   XCircle,
-  Users,
-  Rocket,
-  Plane,
   TrendingUp,
   AlertCircle,
   FileCheck,

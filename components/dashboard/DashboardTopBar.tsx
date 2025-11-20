@@ -20,7 +20,6 @@ interface DashboardTopBarProps {
 }
 
 export const DashboardTopBar = ({ 
-  title = "Dashboard", 
   breadcrumbs = [{ label: "Dashboard" }] 
 }: DashboardTopBarProps) => {
   return (
