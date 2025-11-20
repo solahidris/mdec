@@ -22,7 +22,14 @@ import {
   PromptInputTextarea,
   type PromptInputMessage,
 } from "@/components/ai-elements/prompt-input";
+import { Shimmer } from "@/components/ai-elements/shimmer";
 import { Button } from "@/components/ui/button";
+
+const SUGGESTED_QUESTIONS = [
+  "What are the eligibility requirements?",
+  "How do I apply for DE Rantau?",
+  "What documents do I need?",
+] as const;
 
 export function ChatWidget() {
   const { messages, sendMessage, status } = useChat({
@@ -73,37 +80,18 @@ export function ChatWidget() {
                     </div>
 
                     <div className="space-y-2">
-                      <Button
-                        onClick={() => {
-                          sendMessage({
-                            text: "What are the eligibility requirements?",
-                          });
-                        }}
-                        variant="outline"
-                        className="w-full justify-start h-auto px-4 py-3 text-sm bg-secondary/40 hover:bg-secondary/60 border-border font-normal"
-                      >
-                        What are the eligibility requirements?
-                      </Button>
-                      <Button
-                        onClick={() => {
-                          sendMessage({
-                            text: "How do I apply for DE Rantau?",
-                          });
-                        }}
-                        variant="outline"
-                        className="w-full justify-start h-auto px-4 py-3 text-sm bg-secondary/40 hover:bg-secondary/60 border-border font-normal"
-                      >
-                        How do I apply for DE Rantau?
-                      </Button>
-                      <Button
-                        onClick={() => {
-                          sendMessage({ text: "What documents do I need?" });
-                        }}
-                        variant="outline"
-                        className="w-full justify-start h-auto px-4 py-3 text-sm bg-secondary/40 hover:bg-secondary/60 border-border font-normal"
-                      >
-                        What documents do I need?
-                      </Button>
+                      {SUGGESTED_QUESTIONS.map((question) => (
+                        <Button
+                          key={question}
+                          onClick={() => {
+                            sendMessage({ text: question });
+                          }}
+                          variant="outline"
+                          className="w-full justify-start h-auto px-4 py-3 text-sm bg-secondary/40 hover:bg-secondary/60 border-border font-normal"
+                        >
+                          {question}
+                        </Button>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -132,13 +120,11 @@ export function ChatWidget() {
                 ))}
 
                 {status === "submitted" && (
-                  <div className="px-2">
-                    <div className="flex items-center gap-1">
-                      <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.3s]"></span>
-                      <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.15s]"></span>
-                      <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce"></span>
-                    </div>
-                  </div>
+                  <Message from="assistant" className="max-w-full">
+                    <MessageContent className="w-full">
+                      <Shimmer duration={2}>Thinking...</Shimmer>
+                    </MessageContent>
+                  </Message>
                 )}
               </ConversationContent>
               <ConversationScrollButton />
