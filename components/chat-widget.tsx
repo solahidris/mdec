@@ -22,11 +22,12 @@ import {
   PromptInputTextarea,
   type PromptInputMessage,
 } from "@/components/ai-elements/prompt-input";
+import { Button } from "@/components/ui/button";
 
 export function ChatWidget() {
   const { messages, sendMessage, status } = useChat({
     transport: new DefaultChatTransport({
-      api: '/api/chat',
+      api: "/api/chat",
     }),
   });
   const [isOpen, setIsOpen] = useState(false);
@@ -34,8 +35,8 @@ export function ChatWidget() {
   const handleSubmit = (message: PromptInputMessage) => {
     const hasText = Boolean(message.text);
     if (!hasText) return;
-    
-    sendMessage({ text: message.text || '' });
+
+    sendMessage({ text: message.text || "" });
   };
 
   return (
@@ -70,45 +71,54 @@ export function ChatWidget() {
                         Ask me anything related to MDEC programmes.
                       </p>
                     </div>
-                    
+
                     <div className="space-y-2">
-                      <button
+                      <Button
                         onClick={() => {
-                          sendMessage({ text: "What are the eligibility requirements?" });
+                          sendMessage({
+                            text: "What are the eligibility requirements?",
+                          });
                         }}
-                        className="w-full text-left px-4 py-3 text-sm bg-secondary/40 hover:bg-secondary/60 border border-border rounded-lg transition-colors"
+                        variant="outline"
+                        className="w-full justify-start h-auto px-4 py-3 text-sm bg-secondary/40 hover:bg-secondary/60 border-border font-normal"
                       >
                         What are the eligibility requirements?
-                      </button>
-                      <button
+                      </Button>
+                      <Button
                         onClick={() => {
-                          sendMessage({ text: "How do I apply for DE Rantau?" });
+                          sendMessage({
+                            text: "How do I apply for DE Rantau?",
+                          });
                         }}
-                        className="w-full text-left px-4 py-3 text-sm bg-secondary/40 hover:bg-secondary/60 border border-border rounded-lg transition-colors"
+                        variant="outline"
+                        className="w-full justify-start h-auto px-4 py-3 text-sm bg-secondary/40 hover:bg-secondary/60 border-border font-normal"
                       >
                         How do I apply for DE Rantau?
-                      </button>
-                      <button
+                      </Button>
+                      <Button
                         onClick={() => {
                           sendMessage({ text: "What documents do I need?" });
                         }}
-                        className="w-full text-left px-4 py-3 text-sm bg-secondary/40 hover:bg-secondary/60 border border-border rounded-lg transition-colors"
+                        variant="outline"
+                        className="w-full justify-start h-auto px-4 py-3 text-sm bg-secondary/40 hover:bg-secondary/60 border-border font-normal"
                       >
                         What documents do I need?
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 )}
-                
+
                 {messages.map((m) => (
-                  <Message 
-                    key={m.id} 
+                  <Message
+                    key={m.id}
                     from={m.role}
                     className={m.role === "assistant" ? "max-w-full" : ""}
                   >
-                    <MessageContent className={m.role === "assistant" ? "w-full" : ""}>
+                    <MessageContent
+                      className={m.role === "assistant" ? "w-full" : ""}
+                    >
                       {m.parts.map((part, partIndex) => {
-                        if (part.type === 'text') {
+                        if (part.type === "text") {
                           return (
                             <MessageResponse key={partIndex}>
                               {part.text}
@@ -120,7 +130,7 @@ export function ChatWidget() {
                     </MessageContent>
                   </Message>
                 ))}
-                
+
                 {status === "submitted" && (
                   <div className="px-2">
                     <div className="flex items-center gap-1">
@@ -135,18 +145,20 @@ export function ChatWidget() {
             </Conversation>
 
             {/* Input */}
-            <PromptInput 
-              onSubmit={handleSubmit}
-              className="border-t border-border bg-background/50"
-            >
-              <PromptInputBody>
-                <PromptInputTextarea 
-                  placeholder="Type a message..."
-                  className="min-h-[44px]"
-                />
-              </PromptInputBody>
-              <PromptInputSubmit status={status} />
-            </PromptInput>
+            <div className="p-4 border-border bg-background/50">
+              <PromptInput
+                onSubmit={handleSubmit}
+                className="border border-border focus-within:border-border focus-within:ring-[0.5px] focus-within:ring-border/50 rounded-xl shadow-none bg-secondary"
+              >
+                <PromptInputBody>
+                  <PromptInputTextarea
+                    placeholder="Type a message..."
+                    className="min-h-[52px] py-4"
+                  />
+                </PromptInputBody>
+                <PromptInputSubmit status={status} className="mr-1" />
+              </PromptInput>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
