@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { MessageCircle, X, Send } from "lucide-react";
+import { MessageCircle, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -15,6 +15,13 @@ import {
   MessageContent,
   MessageResponse,
 } from "@/components/ai-elements/message";
+import {
+  PromptInput,
+  PromptInputBody,
+  PromptInputSubmit,
+  PromptInputTextarea,
+  type PromptInputMessage,
+} from "@/components/ai-elements/prompt-input";
 
 export function ChatWidget() {
   const { messages, sendMessage, status } = useChat({
@@ -23,19 +30,12 @@ export function ChatWidget() {
     }),
   });
   const [isOpen, setIsOpen] = useState(false);
-  const [input, setInput] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (input.trim()) {
-      sendMessage({ text: input });
-      setInput("");
-      // Reset textarea height
-      const textarea = document.querySelector('textarea');
-      if (textarea) {
-        textarea.style.height = 'auto';
-      }
-    }
+  const handleSubmit = (message: PromptInputMessage) => {
+    const hasText = Boolean(message.text);
+    if (!hasText) return;
+    
+    sendMessage({ text: message.text || '' });
   };
 
   return (
@@ -101,8 +101,12 @@ export function ChatWidget() {
                 )}
                 
                 {messages.map((m) => (
-                  <Message key={m.id} from={m.role}>
-                    <MessageContent>
+                  <Message 
+                    key={m.id} 
+                    from={m.role}
+                    className={m.role === "assistant" ? "max-w-full" : ""}
+                  >
+                    <MessageContent className={m.role === "assistant" ? "w-full" : ""}>
                       {m.parts.map((part, partIndex) => {
                         if (part.type === 'text') {
                           return (
@@ -131,38 +135,18 @@ export function ChatWidget() {
             </Conversation>
 
             {/* Input */}
-            <form
+            <PromptInput 
               onSubmit={handleSubmit}
-              className="p-4 border-t border-border bg-background/50"
+              className="border-t border-border bg-background/50"
             >
-              <div className="relative flex items-end">
-                <textarea
-                  className="w-full px-4 py-3 pr-12 bg-secondary border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl outline-none transition-all text-sm text-foreground placeholder:text-muted-foreground resize-none min-h-[44px] max-h-[200px]"
-                  value={input}
-                  onChange={(e) => {
-                    setInput(e.target.value);
-                    e.target.style.height = 'auto';
-                    e.target.style.height = e.target.scrollHeight + 'px';
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                      e.preventDefault();
-                      handleSubmit(e);
-                    }
-                  }}
+              <PromptInputBody>
+                <PromptInputTextarea 
                   placeholder="Type a message..."
-                  disabled={status !== "ready"}
-                  rows={1}
+                  className="min-h-[44px]"
                 />
-                <button
-                  type="submit"
-                  disabled={status !== "ready" || !input.trim()}
-                  className="absolute right-2 bottom-2 p-2 bg-primary hover:opacity-90 disabled:opacity-50 text-primary-foreground rounded-lg transition-opacity"
-                >
-                  <Send className="w-4 h-4" />
-                </button>
-              </div>
-            </form>
+              </PromptInputBody>
+              <PromptInputSubmit status={status} />
+            </PromptInput>
           </motion.div>
         )}
       </AnimatePresence>
