@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import {
   LayoutDashboard,
   Users,
@@ -111,15 +112,17 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader>
-        <SidebarMenu>
+        <SidebarHeader>
+          <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <Link href="/">
                 <div className="flex aspect-square size-10 items-center justify-center rounded-lg">
-                  <img
+                  <Image
                     src="/logo/logo-favi.png"
                     alt="MDEC"
+                    width={40}
+                    height={40}
                     className="size-10 rounded-lg shadow"
                   />
                 </div>
@@ -132,8 +135,8 @@ export function AppSidebar() {
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader>
+          </SidebarMenu>
+        </SidebarHeader>
 
       <SidebarContent>
         {/* Main Navigation */}

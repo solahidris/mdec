@@ -9,6 +9,7 @@ import {
   LogOut
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export const DashboardHeader = () => {
   return (
@@ -18,9 +19,11 @@ export const DashboardHeader = () => {
           {/* Logo and Title */}
           <div className="flex items-center gap-4">
             <Link href="/" className="cursor-pointer">
-              <img
+              <Image
                 src="/images/mdec-logo.png"
                 alt="MDEC Logo"
+                width={120}
+                height={40}
                 className="h-10 w-auto"
               />
             </Link>

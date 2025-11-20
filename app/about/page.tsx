@@ -6,6 +6,7 @@ import { Footer } from "@/components/homepage/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const AboutPage = () => {
   return (
@@ -141,10 +142,11 @@ const AboutPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-6 gap-8 mb-12">
             <div className="flex items-center justify-center md:col-span-2">
               <div className="relative w-48 h-32 md:w-56 md:h-36">
-                <img 
+                <Image 
                   src="https://mdec.my/static/images/malaysiadigital/md-logo.png" 
                   alt="Malaysia Digital Logo" 
-                  className="w-full h-full object-contain"
+                  fill
+                  className="object-contain"
                 />
               </div>
             </div>
@@ -193,11 +195,12 @@ const AboutPage = () => {
               </Button>
             </div>
             <div className="lg:w-1/2 flex items-center justify-center p-8 md:p-0">
-              <div className="relative w-full max-w-md">
-                <img 
+              <div className="relative w-full max-w-md h-64 md:h-80">
+                <Image 
                   src="https://mdec.my/static/images/about-mdec/brand-guide-book-cover-landscape-copy@3x.webp" 
                   alt="MDEC Brand Book" 
-                  className="w-full h-auto object-contain md:absolute md:-right-14 md:-top-10"
+                  fill
+                  className="object-contain md:absolute md:-right-14 md:-top-10"
                 />
               </div>
             </div>
@@ -209,11 +212,12 @@ const AboutPage = () => {
           <div className="container mx-auto px-4 py-12 md:py-16 max-w-5xl">
             <div className="flex flex-col-reverse sm:flex-row gap-8 items-center">
               <div className="sm:w-1/2 flex justify-center">
-                <div className="relative w-full max-w-xs">
-                  <img 
+                <div className="relative w-full max-w-xs h-96">
+                  <Image 
                     src="https://mdec.my/static/images/about-mdec/book-anti-corrupt.webp" 
                     alt="MDEC Anti-Corruption Plan Book" 
-                    className="w-full h-auto object-contain"
+                    fill
+                    className="object-contain"
                   />
                   <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#d90b2f] to-transparent pointer-events-none" />
                 </div>

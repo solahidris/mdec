@@ -1,4 +1,5 @@
 import { Facebook, Youtube, Instagram, Twitter, Linkedin } from "lucide-react";
+import Image from "next/image";
 
 export const Footer = () => {
   return (
@@ -8,9 +9,11 @@ export const Footer = () => {
         <div className="grid md:grid-cols-12 gap-8 mb-12">
           {/* MDEC Brand Section - Takes up more space */}
           <div className="md:col-span-4">
-            <img
+            <Image
               src="/images/mdec-white.png"
               alt="MDEC Logo"
+              width={180}
+              height={48}
               className="h-12 w-auto mb-4"
             />
             <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
@@ -139,9 +142,11 @@ export const Footer = () => {
 
           {/* Ministry Logo Section */}
           <div className="md:col-span-2 flex flex-col items-start md:items-center">
-            <img
+            <Image
               src="/images/kkd.png"
               alt="Ministry of Digital"
+              width={84}
+              height={56}
               className="h-14 w-auto mb-2"
             />
             <p className="text-xs text-gray-400 font-semibold">Ministry of Digital</p>

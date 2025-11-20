@@ -346,12 +346,12 @@ export function MessageAttachment({
     >
       {isImage ? (
         <>
-          <img
-            alt={filename || "attachment"}
-            className="size-full object-cover"
-            height={100}
-            src={data.url}
-            width={100}
+          <Image
+            src="/images/mdec-logo.png"
+            alt="MDEC"
+            width={48}
+            height={16}
+            className="h-4 w-auto"
           />
           {onRemove && (
             <Button

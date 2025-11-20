@@ -8,6 +8,14 @@ const withMDX = createMDX({
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https' as const,
+        hostname: 'mdec.my',
+      },
+    ],
+  },
 };
 
 export default withMDX(config);
