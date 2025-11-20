@@ -94,7 +94,7 @@ export function ChatWidget() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="w-[90vw] max-w-[450px] h-[600px] flex flex-col bg-background border border-border rounded-2xl shadow-2xl overflow-hidden"
+              className="w-[90vw] max-w-[450px] h-[600px] flex flex-col bg-background border border-border rounded-lg shadow-2xl overflow-hidden"
             >
               {/* Messages */}
               <Conversation className="flex-1">
@@ -237,7 +237,7 @@ export function ChatWidget() {
                       <Button
                         variant="default"
                         size="icon"
-                        className="h-8 w-8 rounded-full"
+                        className="h-8 w-8 rounded-lg"
                         onClick={handleSubmit}
                       >
                         {isLoading ? (
@@ -260,7 +260,7 @@ export function ChatWidget() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-4 right-4 z-50 flex items-center gap-2 px-4 py-3 bg-primary text-primary-foreground rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+          className="fixed bottom-4 right-4 z-50 flex items-center gap-2 px-4 py-3 bg-foreground text-background rounded-lg shadow-lg hover:shadow-xl transition-shadow"
         >
           <MessageCircle className="w-5 h-5" />
           <span className="text-sm font-medium">Ask MDEC AI</span>
