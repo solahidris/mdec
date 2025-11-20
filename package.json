@@ -20,7 +20,7 @@
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@types/mdx": "^2.0.13",
-    "ai": "^5.0.95",
+    "ai": "^5.0.97",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.24",
@@ -31,7 +31,9 @@
     "next": "16.0.3",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "tailwind-merge": "^3.4.0"
+    "streamdown": "^1.5.1",
+    "tailwind-merge": "^3.4.0",
+    "use-stick-to-bottom": "^1.1.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
