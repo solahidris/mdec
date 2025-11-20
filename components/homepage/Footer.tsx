@@ -101,6 +101,14 @@ export const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li>
                 <a
+                  href="/docs"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  Wiki
+                </a>
+              </li>
+              <li>
+                <a
                   href="/about"
                   className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >

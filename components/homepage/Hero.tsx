@@ -53,13 +53,13 @@ export const Hero = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <Link href="/about">
+            <Link href="/docs">
               <Button
                 size="lg"
                 variant="outline"
                 className="bg-white text-black border-white hover:bg-white/90 cursor-pointer font-semibold px-8"
               >
-                About MDEC
+                Explore Wiki
               </Button>
             </Link>
           </motion.div>
