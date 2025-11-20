@@ -17,13 +17,13 @@ import {
 } from "@/components/ai-elements/message";
 import {
   PromptInput,
-  PromptInputBody,
-  PromptInputSubmit,
+  PromptInputAction,
+  PromptInputActions,
   PromptInputTextarea,
-  type PromptInputMessage,
-} from "@/components/ai-elements/prompt-input";
+} from "@/components/ui/prompt-input";
 import { Shimmer } from "@/components/ai-elements/shimmer";
 import { Button } from "@/components/ui/button";
+import { ArrowUp, Square } from "lucide-react";
 
 const SUGGESTED_QUESTIONS = [
   "What are the eligibility requirements for MTEP?",
@@ -39,11 +39,16 @@ export function ChatWidget() {
   });
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSubmit = (message: PromptInputMessage) => {
-    const hasText = Boolean(message.text);
-    if (!hasText) return;
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-    sendMessage({ text: message.text || "" });
+  const handleSubmit = () => {
+    sendMessage({ text: input });
+    setInput("");
+  };
+
+  const handleValueChange = (value: string) => {
+    setInput(value);
   };
 
   const handleNewChat = () => {
@@ -92,10 +97,16 @@ export function ChatWidget() {
               className="w-[90vw] max-w-[450px] h-[600px] flex flex-col bg-background border border-border rounded-2xl shadow-2xl overflow-hidden"
             >
               {/* Messages */}
-              <Conversation className="flex-1 pt-4">
-                <ConversationContent className="gap-4">
+              <Conversation className="flex-1">
+                <ConversationContent
+                  className={
+                    messages.length === 0
+                      ? "h-full flex items-center justify-center"
+                      : "gap-4 pt-4"
+                  }
+                >
                   {messages.length === 0 && (
-                    <div className="flex flex-col justify-center h-full px-4 space-y-6">
+                    <div className="flex flex-col px-4 space-y-6 w-full">
                       <div className="space-y-2">
                         <h2 className="text-lg font-semibold text-foreground">
                           Hello! 👋
@@ -159,16 +170,31 @@ export function ChatWidget() {
               {/* Input */}
               <div className="p-4 border-border bg-background/50">
                 <PromptInput
+                  value={input}
+                  onValueChange={handleValueChange}
+                  isLoading={isLoading}
                   onSubmit={handleSubmit}
-                  className="border border-border focus-within:border-border focus-within:ring-[0.5px] focus-within:ring-border/50 rounded-xl shadow-none bg-secondary"
+                  className="w-full max-w-(--breakpoint-md)"
                 >
-                  <PromptInputBody>
-                    <PromptInputTextarea
-                      placeholder="Type a message..."
-                      className="min-h-[52px] py-4"
-                    />
-                  </PromptInputBody>
-                  <PromptInputSubmit status={status} className="mr-1" />
+                  <PromptInputTextarea placeholder="Ask me anything..." />
+                  <PromptInputActions className="justify-end pt-2">
+                    <PromptInputAction
+                      tooltip={isLoading ? "Stop generation" : "Send message"}
+                    >
+                      <Button
+                        variant="default"
+                        size="icon"
+                        className="h-8 w-8 rounded-full"
+                        onClick={handleSubmit}
+                      >
+                        {isLoading ? (
+                          <Square className="size-5 fill-current" />
+                        ) : (
+                          <ArrowUp className="size-5" />
+                        )}
+                      </Button>
+                    </PromptInputAction>
+                  </PromptInputActions>
                 </PromptInput>
               </div>
             </motion.div>
