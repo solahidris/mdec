@@ -47,7 +47,6 @@ const AboutPage = () => {
 
       {/* Main Content */}
       <main className="-mt-10 md:-mt-8 rounded-t-[30px] relative z-10 bg-zinc-100">
-
         {/* Leading Digital Economy Section */}
         <section className="container mx-auto px-4 py-10 md:py-16 max-w-5xl">
           <motion.div
@@ -60,18 +59,21 @@ const AboutPage = () => {
             </h2>
             <div className="text-black text-base leading-relaxed space-y-4">
               <p>
-                Malaysia Digital Economy Corporation (MDEC), a government agency under the purview 
-                of the Ministry of Digital, was established in 1996 to lead Malaysia&apos;s digital 
-                economy. Beginning with the implementation of the MSC Malaysia initiative, we have 
-                since then catalysed digital transformation and growth all over the nation. By 
-                offering greater incentives and governance for growth and re-investment, we aspire 
-                to bolster Malaysia&apos;s status as the digital hub of ASEAN, opening new doors and 
-                driving shared prosperity for all Malaysians.
+                Malaysia Digital Economy Corporation (MDEC), a government agency
+                under the purview of the Ministry of Digital, was established in
+                1996 to lead Malaysia&apos;s digital economy. Beginning with the
+                implementation of the MSC Malaysia initiative, we have since
+                then catalysed digital transformation and growth all over the
+                nation. By offering greater incentives and governance for growth
+                and re-investment, we aspire to bolster Malaysia&apos;s status
+                as the digital hub of ASEAN, opening new doors and driving
+                shared prosperity for all Malaysians.
               </p>
               <p>
-                Discover how MDEC is empowering the nation by upskilling Malaysians to be digitally 
-                savvy, providing digitalisation support to businesses, supporting tech companies in 
-                expanding internationally and driving investment in the digital economy.
+                Discover how MDEC is empowering the nation by upskilling
+                Malaysians to be digitally savvy, providing digitalisation
+                support to businesses, supporting tech companies in expanding
+                internationally and driving investment in the digital economy.
               </p>
             </div>
           </motion.div>
@@ -116,19 +118,24 @@ const AboutPage = () => {
               <div className="grid grid-cols-1 gap-6">
                 <div>
                   <p className="text-base md:text-lg leading-relaxed">
-                    <span className="text-primary font-semibold">Our vision </span>
+                    <span className="text-primary font-semibold">
+                      Our vision{" "}
+                    </span>
                     <span className="text-black">
-                      is for Malaysia to be the preferred hub for world-class digital businesses 
-                      and talents.
+                      is for Malaysia to be the preferred hub for world-class
+                      digital businesses and talents.
                     </span>
                   </p>
                 </div>
                 <div>
                   <p className="text-base md:text-lg leading-relaxed">
-                    <span className="text-primary font-semibold">Our mission </span>
+                    <span className="text-primary font-semibold">
+                      Our mission{" "}
+                    </span>
                     <span className="text-black">
-                      is to drive the digital economy through catalytic high-impact initiatives, 
-                      strategic and sustainable investments, and inclusive policies.
+                      is to drive the digital economy through catalytic
+                      high-impact initiatives, strategic and sustainable
+                      investments, and inclusive policies.
                     </span>
                   </p>
                 </div>
@@ -142,9 +149,9 @@ const AboutPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-6 gap-8 mb-12">
             <div className="flex items-center justify-center md:col-span-2">
               <div className="relative w-48 h-32 md:w-56 md:h-36">
-                <Image 
-                  src="https://mdec.my/static/images/malaysiadigital/md-logo.png" 
-                  alt="Malaysia Digital Logo" 
+                <Image
+                  src="https://mdec.my/static/images/malaysiadigital/md-logo.png"
+                  alt="Malaysia Digital Logo"
                   fill
                   className="object-contain"
                 />
@@ -158,10 +165,11 @@ const AboutPage = () => {
                 Malaysia Digital
               </p>
               <p className="py-2 text-base md:text-lg leading-relaxed">
-                Malaysia Digital is a national strategic initiative by the Malaysian Government 
-                to encourage and attract companies, talents and investment while enabling Malaysian 
-                businesses and Citizens to play a leading part in the global digital revolution 
-                and digital economy.
+                Malaysia Digital is a national strategic initiative by the
+                Malaysian Government to encourage and attract companies, talents
+                and investment while enabling Malaysian businesses and Citizens
+                to play a leading part in the global digital revolution and
+                digital economy.
               </p>
               <a className="text-sm font-bold uppercase cursor-pointer text-[#d90b2f] hover:text-[#b00e15] inline-block mt-2">
                 + Learn More
@@ -181,24 +189,26 @@ const AboutPage = () => {
                 Brand Book
               </h3>
               <p className="text-base leading-relaxed mb-8">
-                Download our brand guideline that covers MDEC&apos;s visual identity, dos and don&apos;ts 
-                and best practices for our brand. For the usage of our brand assets, kindly 
-                request the permission to{" "}
-                <a href="mailto:clic@mdec.com.my" className="text-blue-600 hover:underline">
+                Download our brand guideline that covers MDEC&apos;s visual
+                identity, dos and don&apos;ts and best practices for our brand.
+                For the usage of our brand assets, kindly request the permission
+                to{" "}
+                <a
+                  href="mailto:clic@mdec.com.my"
+                  className="text-blue-600 hover:underline"
+                >
                   clic@mdec.com.my
                 </a>
               </p>
-              <Button
-                className="cursor-pointer bg-primary hover:bg-primary/90 text-white font-bold px-6 py-3 rounded-full uppercase text-sm"
-              >
+              <Button className="cursor-pointer bg-primary hover:bg-primary/90 text-white font-bold px-6 py-3 rounded-full uppercase text-sm">
                 Download Our Brand Book
               </Button>
             </div>
             <div className="lg:w-1/2 flex items-center justify-center p-8 md:p-0">
               <div className="relative w-full max-w-md h-64 md:h-80">
-                <Image 
-                  src="https://mdec.my/static/images/about-mdec/brand-guide-book-cover-landscape-copy@3x.webp" 
-                  alt="MDEC Brand Book" 
+                <Image
+                  src="https://mdec.my/static/images/about-mdec/brand-guide-book-cover-landscape-copy@3x.webp"
+                  alt="MDEC Brand Book"
                   fill
                   className="object-contain md:absolute md:-right-14 md:-top-10"
                 />
@@ -213,9 +223,9 @@ const AboutPage = () => {
             <div className="flex flex-col-reverse sm:flex-row gap-8 items-center">
               <div className="sm:w-1/2 flex justify-center">
                 <div className="relative w-full max-w-xs h-96">
-                  <Image 
-                    src="https://mdec.my/static/images/about-mdec/book-anti-corrupt.webp" 
-                    alt="MDEC Anti-Corruption Plan Book" 
+                  <Image
+                    src="https://mdec.my/static/images/about-mdec/book-anti-corrupt.webp"
+                    alt="MDEC Anti-Corruption Plan Book"
                     fill
                     className="object-contain"
                   />
@@ -251,7 +261,8 @@ const AboutPage = () => {
               Come Work With Us
             </h2>
             <p className="text-base md:text-lg text-black mb-8 max-w-2xl mx-auto">
-              Come and be part of the team. Together, we can shape Malaysia&apos;s digital future.
+              Come and be part of the team. Together, we can shape
+              Malaysia&apos;s digital future.
             </p>
             <Button
               size="lg"
@@ -269,4 +280,3 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
-
