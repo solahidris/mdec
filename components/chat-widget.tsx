@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/prompt-input";
 import { Shimmer } from "@/components/ai-elements/shimmer";
 import { Button } from "@/components/ui/button";
-import { ArrowUp, Square } from "lucide-react";
+import { ArrowUp, Square, Loader2, Book } from "lucide-react";
 
 const SUGGESTED_QUESTIONS = [
   "What are the eligibility requirements for MTEP?",
@@ -150,6 +150,59 @@ export function ChatWidget() {
                               </MessageResponse>
                             );
                           }
+
+                          // Handle tool invocations that appear as parts with type starting with "tool-"
+                          if (part.type.startsWith("tool-")) {
+                            const toolInvocation = part as any;
+                            const toolName =
+                              toolInvocation.toolName ||
+                              part.type.replace("tool-", "");
+                            const isFinished =
+                              toolInvocation.state === "result" ||
+                              toolInvocation.state === "output-available" ||
+                              toolInvocation.state === "done"; // "done" seen in logs for step-start/end but checking just in case
+                            const args =
+                              toolInvocation.args || toolInvocation.input || {};
+                            const result =
+                              toolInvocation.result || toolInvocation.output;
+
+                            // Skip if it's just a step marker without tool data, though logs show tool-searchDocumentation has data
+                            if (!toolName) return null;
+
+                            return (
+                              <div
+                                key={partIndex}
+                                className="mb-2 flex items-center gap-2 text-sm text-muted-foreground"
+                              >
+                                {isFinished ? (
+                                  <Book className="size-4" />
+                                ) : (
+                                  <Loader2 className="size-4 animate-spin" />
+                                )}
+                                <div className="flex-1">
+                                  {!isFinished ? (
+                                    <Shimmer duration={2}>
+                                      {toolName === "searchDocumentation"
+                                        ? "Reading Knowledge Base..."
+                                        : `Calling ${toolName}...`}
+                                    </Shimmer>
+                                  ) : (
+                                    <span className="flex items-center gap-1">
+                                      {toolName === "searchDocumentation"
+                                        ? "Read Knowledge Base"
+                                        : `Called ${toolName}`}
+                                      {result && (
+                                        <span className="text-xs bg-secondary px-1.5 py-0.5 rounded-full">
+                                          {result.totalFound} results
+                                        </span>
+                                      )}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            );
+                          }
+
                           return null;
                         })}
                       </MessageContent>
