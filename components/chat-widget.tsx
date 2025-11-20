@@ -40,7 +40,7 @@ export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const isLoading = status === "submitted";
 
   const handleSubmit = () => {
     sendMessage({ text: input });
