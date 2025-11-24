@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import { ChatWidget } from "@/components/chat-widget";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,8 +34,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <RootProvider theme={{ defaultTheme: "light", forcedTheme: "light" }}>
-          {children}
-          <ChatWidget />
+          <AuthProvider>
+            {children}
+            <ChatWidget />
+            <Toaster />
+          </AuthProvider>
         </RootProvider>
       </body>
     </html>

@@ -1,8 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "sonner";
 import {
   LayoutDashboard,
   Users,
@@ -114,8 +116,18 @@ const settingsItems = [
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { logout, user } = useAuth();
   const isUserDashboard = pathname?.startsWith("/dashboard/user");
   const isAdminDashboard = pathname?.startsWith("/dashboard/admin");
+
+  const handleLogout = () => {
+    logout();
+    toast.success("Logout successful!", {
+      description: "You have been logged out successfully.",
+    });
+    router.push("/login");
+  };
 
   return (
     <Sidebar collapsible="icon">
@@ -283,8 +295,12 @@ export function AppSidebar() {
                     <User2 className="size-4" />
                   </div>
                   <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-semibold">Admin User</span>
-                    <span className="truncate text-xs">admin@mdec.my</span>
+                    <span className="truncate font-semibold">
+                      {user?.username === "admin" ? "Admin User" : "User"}
+                    </span>
+                    <span className="truncate text-xs">
+                      {user?.username === "admin" ? "admin@mdec.my" : "user@mdec.my"}
+                    </span>
                   </div>
                   <ChevronUp className="ml-auto size-4" />
                 </SidebarMenuButton>
@@ -295,15 +311,24 @@ export function AppSidebar() {
                 align="end"
                 sideOffset={4}
               >
-                <DropdownMenuItem>
+                <DropdownMenuItem
+                  className="text-muted-foreground cursor-not-allowed opacity-50"
+                  onSelect={(e) => e.preventDefault()}
+                >
                   <User2 className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem
+                  className="text-muted-foreground cursor-not-allowed opacity-50"
+                  onSelect={(e) => e.preventDefault()}
+                >
                   <Settings className="mr-2 h-4 w-4" />
                   <span>Settings</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem
+                  className="cursor-pointer"
+                  onSelect={handleLogout}
+                >
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Log out</span>
                 </DropdownMenuItem>
