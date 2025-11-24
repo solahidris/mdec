@@ -145,6 +145,22 @@ export const Footer = () => {
                   Contact Us
                 </a>
               </li>
+              <li>
+                <a
+                  href="/dashboard/admin"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  Admin Dashboard
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/dashboard/user"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  User Dashboard
+                </a>
+              </li>
             </ul>
           </div>
 

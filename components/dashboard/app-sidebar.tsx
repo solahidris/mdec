@@ -17,6 +17,7 @@ import {
   User2,
   Home,
   Workflow,
+  GitBranch,
 } from "lucide-react";
 
 import {
@@ -52,6 +53,12 @@ const mainMenuItems = [
     title: "Pipeline",
     url: "/dashboard/admin/pipeline",
     icon: Workflow,
+    active: true,
+  },
+  {
+    title: "Flow Chart",
+    url: "/dashboard/admin/flowchart",
+    icon: GitBranch,
     active: true,
   },
   {
@@ -145,9 +152,9 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {mainMenuItems.map((item) => {
-                // Pipeline should only be active on admin dashboard
-                const isPipelineItem = item.title === "Pipeline";
-                const isActive = isPipelineItem ? (item.active && isAdminDashboard) : item.active;
+                // Pipeline and Flow Chart should only be active on admin dashboard
+                const isAdminOnlyItem = item.title === "Pipeline" || item.title === "Flow Chart";
+                const isActive = isAdminOnlyItem ? (item.active && isAdminDashboard) : item.active;
                 
                 return (
                   <SidebarMenuItem key={item.title}>
