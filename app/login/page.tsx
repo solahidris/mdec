@@ -48,7 +48,7 @@ export default function LoginPage() {
       toast.success("Login successful!", {
         description: "Welcome back! Redirecting to your dashboard...",
       });
-      
+
       // Route based on username
       if (username === "admin") {
         router.push("/dashboard/admin");
@@ -127,7 +127,7 @@ export default function LoginPage() {
 
         <div className="text-center text-sm text-gray-600">
           <p>
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/contact" className="text-blue-600 hover:underline">
               Contact us
             </Link>
@@ -137,4 +137,3 @@ export default function LoginPage() {
     </div>
   );
 }
-

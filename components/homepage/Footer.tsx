@@ -1,5 +1,6 @@
 import { Facebook, Youtube, Instagram, Twitter, Linkedin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Footer = () => {
   return (
@@ -70,28 +71,28 @@ export const Footer = () => {
             <h4 className="font-semibold mb-4 text-white">Programmes</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <a
+                <Link
                   href="/expats"
                   className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
                   Expats Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/mtep"
                   className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
                   MTEP
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/derantau"
                   className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
                   DE Rantau
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -100,28 +101,96 @@ export const Footer = () => {
             <h4 className="font-semibold mb-4 text-white">Resources</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <a
+                <Link
                   href="/docs"
                   className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
                   Wiki
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/about"
                   className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/contact"
                   className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
                   Contact
-                </a>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <h4 className="font-semibold mb-4 text-white">Company</h4>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <Link
+                  href="/about"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/dashboard/admin"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  Admin Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/dashboard/user"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  User Dashboard
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <h4 className="font-semibold mb-4 text-white">Resources</h4>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <Link
+                  href="/docs"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  Wiki
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-gray-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>

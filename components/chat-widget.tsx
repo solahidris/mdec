@@ -31,6 +31,20 @@ const SUGGESTED_QUESTIONS = [
   "What documents do I need for Expats service as an MD company?",
 ] as const;
 
+interface ToolInvocation {
+  type: string;
+  toolName?: string;
+  state?: "result" | "output-available" | "done" | string;
+  args?: Record<string, unknown>;
+  input?: Record<string, unknown>;
+  result?: {
+    totalFound?: number;
+  };
+  output?: {
+    totalFound?: number;
+  };
+}
+
 export function ChatWidget() {
   const { messages, sendMessage, status, setMessages } = useChat({
     transport: new DefaultChatTransport({
@@ -153,7 +167,7 @@ export function ChatWidget() {
 
                           // Handle tool invocations that appear as parts with type starting with "tool-"
                           if (part.type.startsWith("tool-")) {
-                            const toolInvocation = part as any;
+                            const toolInvocation = part as ToolInvocation;
                             const toolName =
                               toolInvocation.toolName ||
                               part.type.replace("tool-", "");
