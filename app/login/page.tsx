@@ -13,6 +13,7 @@ import { toast } from "sonner";
 
 export default function LoginPage() {
   const [isAdminMode, setIsAdminMode] = useState(true);
+  const [isSuperAdminMode, setIsSuperAdminMode] = useState(false);
   const [username, setUsername] = useState("admin");
   const [password, setPassword] = useState("admin");
   const [error, setError] = useState("");
@@ -20,15 +21,23 @@ export default function LoginPage() {
   const { login } = useAuth();
 
   const handleToggleMode = () => {
-    setIsAdminMode(!isAdminMode);
-    if (!isAdminMode) {
-      // Switching to admin mode
-      setUsername("admin");
-      setPassword("admin");
-    } else {
-      // Switching to user mode
+    if (isSuperAdminMode) {
+      // Switch to user mode
+      setIsSuperAdminMode(false);
+      setIsAdminMode(false);
       setUsername("user");
       setPassword("user");
+    } else if (isAdminMode) {
+      // Switch to super admin mode
+      setIsSuperAdminMode(true);
+      setIsAdminMode(true);
+      setUsername("superadmin");
+      setPassword("superadmin");
+    } else {
+      // Switch to admin mode
+      setIsAdminMode(true);
+      setUsername("admin");
+      setPassword("admin");
     }
     setError("");
   };
@@ -50,7 +59,9 @@ export default function LoginPage() {
       });
 
       // Route based on username
-      if (username === "admin") {
+      if (username === "superadmin") {
+        router.push("/dashboard/superadmin");
+      } else if (username === "admin") {
         router.push("/dashboard/admin");
       } else {
         router.push("/dashboard/user");
@@ -121,7 +132,11 @@ export default function LoginPage() {
             onClick={handleToggleMode}
             className="w-full text-sm text-blue-600 hover:underline cursor-pointer"
           >
-            {isAdminMode ? "Switch to User Login" : "Switch to Admin Login"}
+            {isSuperAdminMode
+              ? "Switch to User Login"
+              : isAdminMode
+              ? "Switch to Super Admin Login"
+              : "Switch to Admin Login"}
           </button>
         </form>
 

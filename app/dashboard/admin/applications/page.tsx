@@ -69,42 +69,42 @@ const ApplicationStatusPage = () => {
       case "approved":
         return {
           icon: CheckCircle,
-          color: "text-green-600",
-          bgColor: "bg-green-100",
+          color: "text-gray-700",
+          bgColor: "bg-gray-100",
           label: "Approved",
         };
       case "rejected":
         return {
           icon: XCircle,
-          color: "text-red-600",
-          bgColor: "bg-red-100",
+          color: "text-gray-700",
+          bgColor: "bg-gray-100",
           label: "Rejected",
         };
       case "under-review":
         return {
           icon: Clock,
-          color: "text-blue-600",
-          bgColor: "bg-blue-100",
+          color: "text-gray-700",
+          bgColor: "bg-gray-100",
           label: "Under Review",
         };
       case "documents-pending":
         return {
           icon: AlertCircle,
-          color: "text-orange-600",
-          bgColor: "bg-orange-100",
+          color: "text-gray-700",
+          bgColor: "bg-gray-100",
           label: "Documents Pending",
         };
       case "submitted":
         return {
           icon: FileText,
-          color: "text-gray-600",
+          color: "text-gray-700",
           bgColor: "bg-gray-100",
           label: "Submitted",
         };
       default:
         return {
           icon: FileText,
-          color: "text-gray-600",
+          color: "text-gray-700",
           bgColor: "bg-gray-100",
           label: status,
         };
@@ -193,74 +193,175 @@ const ApplicationStatusPage = () => {
         />
         <div className="flex-1 overflow-y-auto bg-zinc-100">
           <div className="p-8 max-w-[1800px] mx-auto space-y-6">
-            {/* Statistics Cards */}
+            {/* Filter Buttons */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
-              <Card className="p-4 bg-white shadow-sm">
+              {/* Total - All Applications */}
+              <button
+                onClick={() => setStatusFilter("all")}
+                className={`p-4 rounded-lg shadow-sm transition-all ${
+                  statusFilter === "all"
+                    ? "bg-red-600"
+                    : "bg-white hover:shadow-md hover:border-gray-300 border border-gray-200"
+                }`}
+              >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-gray-100 rounded-lg">
-                    <FileText className="h-5 w-5 text-gray-700" />
+                  <div className={`p-2 rounded-lg ${
+                    statusFilter === "all" ? "bg-white/20" : "bg-gray-100"
+                  }`}>
+                    <FileText className={`h-5 w-5 ${
+                      statusFilter === "all" ? "text-white" : "text-gray-700"
+                    }`} />
                   </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Total</p>
-                    <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+                  <div className="text-left">
+                    <p className={`text-sm ${
+                      statusFilter === "all" ? "text-red-100" : "text-gray-500"
+                    }`}>Total</p>
+                    <p className={`text-2xl font-bold ${
+                      statusFilter === "all" ? "text-white" : "text-gray-900"
+                    }`}>{stats.total}</p>
                   </div>
                 </div>
-              </Card>
-              <Card className="p-4 bg-white shadow-sm">
+              </button>
+
+              {/* Submitted */}
+              <button
+                onClick={() => setStatusFilter("submitted")}
+                className={`p-4 rounded-lg shadow-sm transition-all ${
+                  statusFilter === "submitted"
+                    ? "bg-red-600  "
+                    : "bg-white hover:shadow-md hover:border-gray-300 border border-gray-200"
+                }`}
+              >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-gray-100 rounded-lg">
-                    <FileText className="h-5 w-5 text-gray-600" />
+                  <div className={`p-2 rounded-lg ${
+                    statusFilter === "submitted" ? "bg-white/20" : "bg-gray-100"
+                  }`}>
+                    <FileText className={`h-5 w-5 ${
+                      statusFilter === "submitted" ? "text-white" : "text-gray-700"
+                    }`} />
                   </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Submitted</p>
-                    <p className="text-2xl font-bold text-gray-900">{stats.submitted}</p>
+                  <div className="text-left">
+                    <p className={`text-sm ${
+                      statusFilter === "submitted" ? "text-red-100" : "text-gray-500"
+                    }`}>Submitted</p>
+                    <p className={`text-2xl font-bold ${
+                      statusFilter === "submitted" ? "text-white" : "text-gray-900"
+                    }`}>{stats.submitted}</p>
                   </div>
                 </div>
-              </Card>
-              <Card className="p-4 bg-white shadow-sm">
+              </button>
+
+              {/* Under Review */}
+              <button
+                onClick={() => setStatusFilter("under-review")}
+                className={`p-4 rounded-lg shadow-sm transition-all ${
+                  statusFilter === "under-review"
+                    ? "bg-red-600  "
+                    : "bg-white hover:shadow-md hover:border-gray-300 border border-gray-200"
+                }`}
+              >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-100 rounded-lg">
-                    <Clock className="h-5 w-5 text-blue-600" />
+                  <div className={`p-2 rounded-lg ${
+                    statusFilter === "under-review" ? "bg-white/20" : "bg-gray-100"
+                  }`}>
+                    <Clock className={`h-5 w-5 ${
+                      statusFilter === "under-review" ? "text-white" : "text-gray-700"
+                    }`} />
                   </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Under Review</p>
-                    <p className="text-2xl font-bold text-gray-900">{stats.underReview}</p>
+                  <div className="text-left">
+                    <p className={`text-sm ${
+                      statusFilter === "under-review" ? "text-red-100" : "text-gray-500"
+                    }`}>Under Review</p>
+                    <p className={`text-2xl font-bold ${
+                      statusFilter === "under-review" ? "text-white" : "text-gray-900"
+                    }`}>{stats.underReview}</p>
                   </div>
                 </div>
-              </Card>
-              <Card className="p-4 bg-white shadow-sm">
+              </button>
+
+              {/* Docs Pending */}
+              <button
+                onClick={() => setStatusFilter("documents-pending")}
+                className={`p-4 rounded-lg shadow-sm transition-all ${
+                  statusFilter === "documents-pending"
+                    ? "bg-red-600  "
+                    : "bg-white hover:shadow-md hover:border-gray-300 border border-gray-200"
+                }`}
+              >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-orange-100 rounded-lg">
-                    <AlertCircle className="h-5 w-5 text-orange-600" />
+                  <div className={`p-2 rounded-lg ${
+                    statusFilter === "documents-pending" ? "bg-white/20" : "bg-gray-100"
+                  }`}>
+                    <AlertCircle className={`h-5 w-5 ${
+                      statusFilter === "documents-pending" ? "text-white" : "text-gray-700"
+                    }`} />
                   </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Docs Pending</p>
-                    <p className="text-2xl font-bold text-gray-900">{stats.documentsPending}</p>
+                  <div className="text-left">
+                    <p className={`text-sm ${
+                      statusFilter === "documents-pending" ? "text-red-100" : "text-gray-500"
+                    }`}>Docs Pending</p>
+                    <p className={`text-2xl font-bold ${
+                      statusFilter === "documents-pending" ? "text-white" : "text-gray-900"
+                    }`}>{stats.documentsPending}</p>
                   </div>
                 </div>
-              </Card>
-              <Card className="p-4 bg-white shadow-sm">
+              </button>
+
+              {/* Approved */}
+              <button
+                onClick={() => setStatusFilter("approved")}
+                className={`p-4 rounded-lg shadow-sm transition-all ${
+                  statusFilter === "approved"
+                    ? "bg-red-600  "
+                    : "bg-white hover:shadow-md hover:border-gray-300 border border-gray-200"
+                }`}
+              >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-green-100 rounded-lg">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                  <div className={`p-2 rounded-lg ${
+                    statusFilter === "approved" ? "bg-white/20" : "bg-gray-100"
+                  }`}>
+                    <CheckCircle className={`h-5 w-5 ${
+                      statusFilter === "approved" ? "text-white" : "text-gray-700"
+                    }`} />
                   </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Approved</p>
-                    <p className="text-2xl font-bold text-gray-900">{stats.approved}</p>
+                  <div className="text-left">
+                    <p className={`text-sm ${
+                      statusFilter === "approved" ? "text-red-100" : "text-gray-500"
+                    }`}>Approved</p>
+                    <p className={`text-2xl font-bold ${
+                      statusFilter === "approved" ? "text-white" : "text-gray-900"
+                    }`}>{stats.approved}</p>
                   </div>
                 </div>
-              </Card>
-              <Card className="p-4 bg-white shadow-sm">
+              </button>
+
+              {/* Rejected */}
+              <button
+                onClick={() => setStatusFilter("rejected")}
+                className={`p-4 rounded-lg shadow-sm transition-all ${
+                  statusFilter === "rejected"
+                    ? "bg-red-600  "
+                    : "bg-white hover:shadow-md hover:border-gray-300 border border-gray-200"
+                }`}
+              >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-red-100 rounded-lg">
-                    <XCircle className="h-5 w-5 text-red-600" />
+                  <div className={`p-2 rounded-lg ${
+                    statusFilter === "rejected" ? "bg-white/20" : "bg-gray-100"
+                  }`}>
+                    <XCircle className={`h-5 w-5 ${
+                      statusFilter === "rejected" ? "text-white" : "text-gray-700"
+                    }`} />
                   </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Rejected</p>
-                    <p className="text-2xl font-bold text-gray-900">{stats.rejected}</p>
+                  <div className="text-left">
+                    <p className={`text-sm ${
+                      statusFilter === "rejected" ? "text-red-100" : "text-gray-500"
+                    }`}>Rejected</p>
+                    <p className={`text-2xl font-bold ${
+                      statusFilter === "rejected" ? "text-white" : "text-gray-900"
+                    }`}>{stats.rejected}</p>
                   </div>
                 </div>
-              </Card>
+              </button>
             </div>
 
             {/* Filters and Actions */}
@@ -275,19 +376,6 @@ const ApplicationStatusPage = () => {
                     className="pl-10"
                   />
                 </div>
-                <Select value={statusFilter} onValueChange={setStatusFilter}>
-                  <SelectTrigger className="w-full lg:w-[200px]">
-                    <SelectValue placeholder="Filter by status" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Status</SelectItem>
-                    <SelectItem value="submitted">Submitted</SelectItem>
-                    <SelectItem value="under-review">Under Review</SelectItem>
-                    <SelectItem value="documents-pending">Documents Pending</SelectItem>
-                    <SelectItem value="approved">Approved</SelectItem>
-                    <SelectItem value="rejected">Rejected</SelectItem>
-                  </SelectContent>
-                </Select>
                 <Select value={programmeFilter} onValueChange={setProgrammeFilter}>
                   <SelectTrigger className="w-full lg:w-[200px]">
                     <SelectValue placeholder="Filter by programme" />
@@ -547,13 +635,13 @@ const ApplicationStatusPage = () => {
                           </Select>
                         </div>
                         {hasStatusChange && (
-                          <div className="flex items-center gap-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                            <AlertCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                          <div className="flex items-center gap-3 p-3 bg-red-50 border border-red-200 rounded-lg">
+                            <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
                             <div className="flex-1">
-                              <p className="text-sm text-blue-900 font-medium">
+                              <p className="text-sm text-red-900 font-medium">
                                 Status change pending
                               </p>
-                              <p className="text-xs text-blue-700">
+                              <p className="text-xs text-red-700">
                                 Click Save to confirm the status change
                               </p>
                             </div>
@@ -562,14 +650,14 @@ const ApplicationStatusPage = () => {
                                 size="sm"
                                 variant="outline"
                                 onClick={handleCancelStatusChange}
-                                className="border-blue-300 text-blue-700 hover:bg-blue-100"
+                                className="border-gray-300 text-gray-700 hover:bg-gray-100"
                               >
                                 Cancel
                               </Button>
                               <Button
                                 size="sm"
                                 onClick={handleSaveStatusChange}
-                                className="bg-blue-600 hover:bg-blue-700"
+                                className="bg-red-600 hover:bg-red-700"
                               >
                                 Save Changes
                               </Button>

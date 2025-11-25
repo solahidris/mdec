@@ -20,6 +20,7 @@ import {
   Home,
   Workflow,
   GitBranch,
+  Shield,
 } from "lucide-react";
 
 import {
@@ -50,23 +51,54 @@ const mainMenuItems = [
     url: "/dashboard/admin",
     icon: LayoutDashboard,
     active: true,
+    roles: ["admin", "superadmin"],
   },
   {
     title: "Application Status",
     url: "/dashboard/admin/applications",
     icon: BarChart3,
     active: true,
+    roles: ["admin", "superadmin"],
   },
   {
     title: "Pipeline",
     url: "/dashboard/admin/pipeline",
     icon: Workflow,
     active: true,
+    roles: ["admin", "superadmin"],
   },
   {
     title: "Flow Chart",
     url: "/dashboard/admin/flowchart",
     icon: GitBranch,
+    active: true,
+    roles: ["admin", "superadmin"],
+  },
+];
+
+const superAdminMenuItems = [
+  {
+    title: "Super Admin Dashboard",
+    url: "/dashboard/superadmin",
+    icon: LayoutDashboard,
+    active: true,
+  },
+  {
+    title: "Officer Management",
+    url: "/dashboard/superadmin/officers",
+    icon: Users,
+    active: true,
+  },
+  {
+    title: "Weekly Reports",
+    url: "/dashboard/superadmin/reports",
+    icon: BarChart3,
+    active: true,
+  },
+  {
+    title: "Assign Tasks",
+    url: "/dashboard/superadmin/assign-tasks",
+    icon: Workflow,
     active: true,
   },
 ];
@@ -120,6 +152,7 @@ export function AppSidebar() {
   const { logout, user } = useAuth();
   const isUserDashboard = pathname?.startsWith("/dashboard/user");
   const isAdminDashboard = pathname?.startsWith("/dashboard/admin");
+  const isSuperAdminDashboard = pathname?.startsWith("/dashboard/superadmin");
 
   const handleLogout = () => {
     logout();
@@ -158,6 +191,34 @@ export function AppSidebar() {
         </SidebarHeader>
 
       <SidebarContent>
+        {/* Super Admin Menu */}
+        {isSuperAdminDashboard && (
+          <SidebarGroup>
+            <SidebarGroupLabel>Super Admin</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {superAdminMenuItems.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    {item.active ? (
+                      <SidebarMenuButton asChild>
+                        <Link href={item.url}>
+                          <item.icon />
+                          <span>{item.title}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    ) : (
+                      <SidebarMenuButton disabled className="opacity-50 cursor-not-allowed">
+                        <item.icon />
+                        <span>{item.title}</span>
+                      </SidebarMenuButton>
+                    )}
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        )}
+
         {/* Main Navigation */}
         <SidebarGroup>
           <SidebarGroupLabel>Main Navigation</SidebarGroupLabel>
@@ -261,14 +322,35 @@ export function AppSidebar() {
         <SidebarGroup className="mt-auto">
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href={isUserDashboard ? "/dashboard/admin" : "/dashboard/user"}>
-                    <LayoutDashboard />
-                    <span>{isUserDashboard ? "Admin Dashboard" : "User Dashboard"}</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
+              {isSuperAdminDashboard ? (
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild>
+                    <Link href="/dashboard/admin">
+                      <LayoutDashboard />
+                      <span>Admin Dashboard</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ) : (
+                <>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild>
+                      <Link href={isUserDashboard ? "/dashboard/admin" : "/dashboard/user"}>
+                        <LayoutDashboard />
+                        <span>{isUserDashboard ? "Admin Dashboard" : "User Dashboard"}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild>
+                      <Link href="/dashboard/superadmin">
+                        <Shield />
+                        <span>Super Admin</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </>
+              )}
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href="/">
@@ -296,10 +378,18 @@ export function AppSidebar() {
                   </div>
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-semibold">
-                      {user?.username === "admin" ? "Admin User" : "User"}
+                      {user?.username === "superadmin" 
+                        ? "Super Admin" 
+                        : user?.username === "admin" 
+                        ? "Admin User" 
+                        : "User"}
                     </span>
                     <span className="truncate text-xs">
-                      {user?.username === "admin" ? "admin@mdec.my" : "user@mdec.my"}
+                      {user?.username === "superadmin" 
+                        ? "superadmin@mdec.my" 
+                        : user?.username === "admin" 
+                        ? "admin@mdec.my" 
+                        : "user@mdec.my"}
                     </span>
                   </div>
                   <ChevronUp className="ml-auto size-4" />

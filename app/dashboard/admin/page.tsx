@@ -67,7 +67,7 @@ const Dashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <h1 className="text-3xl font-bold mb-2 text-white">
-                      Welcome back, Admin!
+                      Welcome back, Admin Officer A!
                     </h1>
                     <p className="text-white/90 text-lg font-light">
                       Here&apos;s what&apos;s happening with your programmes today

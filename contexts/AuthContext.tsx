@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface User {
   username: string;
+  role: "user" | "admin" | "superadmin";
 }
 
 interface AuthContextType {
@@ -33,7 +34,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const login = (username: string, password: string) => {
     // Accept any username and password for now
     if (username && password) {
-      const newUser = { username };
+      let role: "user" | "admin" | "superadmin" = "user";
+      
+      if (username === "superadmin") {
+        role = "superadmin";
+      } else if (username === "admin") {
+        role = "admin";
+      }
+      
+      const newUser = { username, role };
       setUser(newUser);
       localStorage.setItem("mdec_user", JSON.stringify(newUser));
       return true;

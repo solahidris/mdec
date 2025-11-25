@@ -1,0 +1,207 @@
+{
+  "officers": [
+    {
+      "id": "officer-a",
+      "name": "Admin Officer A",
+      "email": "officer.a@mdec.my",
+      "role": "Senior Officer",
+      "avatar": "A",
+      "status": "active",
+      "assignedApplications": 45,
+      "completedThisWeek": 12,
+      "pendingTasks": 8,
+      "efficiency": 89,
+      "programmes": ["Expats", "MTEP"],
+      "weeklyStats": {
+        "approved": 8,
+        "rejected": 2,
+        "pending": 6,
+        "underReview": 10
+      }
+    },
+    {
+      "id": "officer-b",
+      "name": "Admin Officer B",
+      "email": "officer.b@mdec.my",
+      "role": "Officer",
+      "avatar": "B",
+      "status": "active",
+      "assignedApplications": 38,
+      "completedThisWeek": 9,
+      "pendingTasks": 12,
+      "efficiency": 82,
+      "programmes": ["DE Rantau"],
+      "weeklyStats": {
+        "approved": 6,
+        "rejected": 1,
+        "pending": 8,
+        "underReview": 14
+      }
+    },
+    {
+      "id": "officer-c",
+      "name": "Admin Officer C",
+      "email": "officer.c@mdec.my",
+      "role": "Senior Officer",
+      "avatar": "C",
+      "status": "active",
+      "assignedApplications": 52,
+      "completedThisWeek": 15,
+      "pendingTasks": 5,
+      "efficiency": 94,
+      "programmes": ["Expats", "DE Rantau"],
+      "weeklyStats": {
+        "approved": 11,
+        "rejected": 2,
+        "pending": 4,
+        "underReview": 8
+      }
+    },
+    {
+      "id": "officer-d",
+      "name": "Admin Officer D",
+      "email": "officer.d@mdec.my",
+      "role": "Officer",
+      "avatar": "D",
+      "status": "on-leave",
+      "assignedApplications": 28,
+      "completedThisWeek": 0,
+      "pendingTasks": 28,
+      "efficiency": 0,
+      "programmes": ["MTEP"],
+      "weeklyStats": {
+        "approved": 0,
+        "rejected": 0,
+        "pending": 20,
+        "underReview": 8
+      }
+    },
+    {
+      "id": "officer-e",
+      "name": "Admin Officer E",
+      "email": "officer.e@mdec.my",
+      "role": "Officer",
+      "avatar": "E",
+      "status": "active",
+      "assignedApplications": 41,
+      "completedThisWeek": 11,
+      "pendingTasks": 9,
+      "efficiency": 87,
+      "programmes": ["Expats", "MTEP", "DE Rantau"],
+      "weeklyStats": {
+        "approved": 7,
+        "rejected": 3,
+        "pending": 7,
+        "underReview": 11
+      }
+    },
+    {
+      "id": "officer-f",
+      "name": "Admin Officer F",
+      "email": "officer.f@mdec.my",
+      "role": "Senior Officer",
+      "avatar": "F",
+      "status": "active",
+      "assignedApplications": 48,
+      "completedThisWeek": 14,
+      "pendingTasks": 6,
+      "efficiency": 91,
+      "programmes": ["MTEP", "DE Rantau"],
+      "weeklyStats": {
+        "approved": 10,
+        "rejected": 2,
+        "pending": 5,
+        "underReview": 9
+      }
+    },
+    {
+      "id": "officer-g",
+      "name": "Admin Officer G",
+      "email": "officer.g@mdec.my",
+      "role": "Officer",
+      "avatar": "G",
+      "status": "active",
+      "assignedApplications": 35,
+      "completedThisWeek": 8,
+      "pendingTasks": 10,
+      "efficiency": 79,
+      "programmes": ["Expats"],
+      "weeklyStats": {
+        "approved": 5,
+        "rejected": 2,
+        "pending": 9,
+        "underReview": 13
+      }
+    }
+  ],
+  "weeklyReport": {
+    "totalApplications": 287,
+    "completed": 69,
+    "pending": 78,
+    "underReview": 73,
+    "approved": 47,
+    "rejected": 12,
+    "avgProcessingTime": "4.2 days",
+    "efficiency": 83.2,
+    "weekStartDate": "2024-11-18",
+    "weekEndDate": "2024-11-24"
+  },
+  "tasks": [
+    {
+      "id": "task-1",
+      "title": "Review Expats Applications - Batch 1",
+      "description": "Review 15 pending Expats programme applications",
+      "priority": "high",
+      "status": "unassigned",
+      "programme": "Expats",
+      "dueDate": "2024-11-26",
+      "estimatedHours": 8,
+      "applicationCount": 15
+    },
+    {
+      "id": "task-2",
+      "title": "MTEP Document Verification",
+      "description": "Verify documents for 10 MTEP applications",
+      "priority": "medium",
+      "status": "unassigned",
+      "programme": "MTEP",
+      "dueDate": "2024-11-27",
+      "estimatedHours": 5,
+      "applicationCount": 10
+    },
+    {
+      "id": "task-3",
+      "title": "DE Rantau Compliance Check",
+      "description": "Conduct compliance checks for 8 DE Rantau applications",
+      "priority": "high",
+      "status": "unassigned",
+      "programme": "DE Rantau",
+      "dueDate": "2024-11-25",
+      "estimatedHours": 6,
+      "applicationCount": 8
+    },
+    {
+      "id": "task-4",
+      "title": "Quarterly Report Preparation",
+      "description": "Prepare quarterly performance report for all programmes",
+      "priority": "medium",
+      "status": "unassigned",
+      "programme": "All",
+      "dueDate": "2024-11-30",
+      "estimatedHours": 12,
+      "applicationCount": 0
+    },
+    {
+      "id": "task-5",
+      "title": "Expats Follow-up Calls",
+      "description": "Make follow-up calls for pending document submissions",
+      "priority": "low",
+      "status": "unassigned",
+      "programme": "Expats",
+      "dueDate": "2024-11-28",
+      "estimatedHours": 4,
+      "applicationCount": 12
+    }
+  ]
+}
+
