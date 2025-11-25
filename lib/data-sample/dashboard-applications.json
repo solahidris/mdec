@@ -1,7 +1,7 @@
 {
   "applications": [
     {
-      "id": "APP-2024-001",
+      "id": "app-2024-001",
       "applicantName": "John Lee",
       "programme": "Expats",
       "company": "TechCorp Solutions Sdn Bhd",
@@ -14,12 +14,12 @@
       "nationality": "Singapore"
     },
     {
-      "id": "APP-2024-002",
+      "id": "app-2024-002",
       "applicantName": "John Lee",
       "programme": "DE Rantau",
       "company": "Freelance",
       "submittedDate": "2024-11-03",
-      "status": "under-review",
+      "status": "interview-needed",
       "priority": "medium",
       "email": "john.lee@email.com",
       "phone": "+60123456789",
@@ -27,7 +27,7 @@
       "nationality": "Singapore"
     },
     {
-      "id": "APP-2024-003",
+      "id": "app-2024-003",
       "applicantName": "John Lee",
       "programme": "MTEP",
       "company": "AI Commerce Pte Ltd",

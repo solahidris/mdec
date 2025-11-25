@@ -30,6 +30,7 @@ import {
   Clock,
   XCircle,
   AlertCircle,
+  MessageSquare,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
@@ -93,6 +94,13 @@ const ApplicationStatusPage = () => {
           color: "text-gray-700",
           bgColor: "bg-gray-100",
           label: "Documents Pending",
+        };
+      case "interview-needed":
+        return {
+          icon: MessageSquare,
+          color: "text-purple-600",
+          bgColor: "bg-purple-100",
+          label: "Interview Needed",
         };
       case "submitted":
         return {
@@ -629,6 +637,7 @@ const ApplicationStatusPage = () => {
                               <SelectItem value="documents-pending">
                                 Documents Pending
                               </SelectItem>
+                              <SelectItem value="interview-needed">Interview Needed</SelectItem>
                               <SelectItem value="approved">Approved</SelectItem>
                               <SelectItem value="rejected">Rejected</SelectItem>
                             </SelectContent>

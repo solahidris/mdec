@@ -102,6 +102,8 @@ const ApplicationDetail = () => {
         return "bg-blue-100 text-blue-800 border-blue-200";
       case "documents-pending":
         return "bg-orange-100 text-orange-800 border-orange-200";
+      case "interview-needed":
+        return "bg-purple-100 text-purple-800 border-purple-200";
       case "rejected":
         return "bg-red-100 text-red-800 border-red-200";
       default:
@@ -126,6 +128,8 @@ const ApplicationDetail = () => {
         return <FileText className="h-5 w-5" />;
       case "documents-pending":
         return <AlertCircle className="h-5 w-5" />;
+      case "interview-needed":
+        return <MessageSquare className="h-5 w-5" />;
       case "rejected":
         return <XCircle className="h-5 w-5" />;
       default:
@@ -389,6 +393,7 @@ const ApplicationDetail = () => {
                             <div className={`flex items-center justify-center w-8 h-8 rounded-full ${
                               application.status === "under-review" || 
                               application.status === "documents-pending" ||
+                              application.status === "interview-needed" ||
                               application.status === "approved" ||
                               application.status === "rejected"
                                 ? "bg-green-100"
@@ -397,13 +402,14 @@ const ApplicationDetail = () => {
                               <CheckCircle className={`h-4 w-4 ${
                                 application.status === "under-review" || 
                                 application.status === "documents-pending" ||
+                                application.status === "interview-needed" ||
                                 application.status === "approved" ||
                                 application.status === "rejected"
                                   ? "text-green-600"
                                   : "text-gray-400"
                               }`} />
                             </div>
-                            {(application.status === "approved" || application.status === "rejected") && (
+                            {(application.status === "interview-needed" || application.status === "approved" || application.status === "rejected") && (
                               <div className="w-0.5 h-full bg-gray-200 mt-2"></div>
                             )}
                           </div>
@@ -412,11 +418,26 @@ const ApplicationDetail = () => {
                             <p className="text-xs text-gray-500 mt-0.5">
                               {application.status === "under-review" || 
                                application.status === "documents-pending" ||
+                               application.status === "interview-needed" ||
                                application.status === "approved" ||
                                application.status === "rejected"
-                                ? "In progress"
+                                ? "Completed"
                                 : "Pending"}
                             </p>
+                          </div>
+                        </div>
+                      )}
+
+                      {application.status === "interview-needed" && (
+                        <div className="flex gap-3">
+                          <div className="flex flex-col items-center">
+                            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-100">
+                              <MessageSquare className="h-4 w-4 text-purple-600" />
+                            </div>
+                          </div>
+                          <div className="flex-1">
+                            <p className="font-medium text-gray-900 text-sm">Interview Needed</p>
+                            <p className="text-xs text-gray-500 mt-0.5">Action required</p>
                           </div>
                         </div>
                       )}
@@ -464,6 +485,12 @@ const ApplicationDetail = () => {
                       <Button className="w-full gap-2 justify-start">
                         <Upload className="h-4 w-4" />
                         Upload Documents
+                      </Button>
+                    )}
+                    {application.status === "interview-needed" && (
+                      <Button className="w-full gap-2 justify-start bg-purple-600 hover:bg-purple-700">
+                        <MessageSquare className="h-4 w-4" />
+                        Take Interview
                       </Button>
                     )}
                   </CardContent>

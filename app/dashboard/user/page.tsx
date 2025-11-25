@@ -21,6 +21,7 @@ import {
   FileCheck,
   Plus,
   AlertCircle,
+  MessageSquare,
 } from "lucide-react";
 
 // Import the mock data
@@ -59,7 +60,7 @@ const UserDashboard = () => {
     approved: userApplications.filter((app) => app.status === "approved")
       .length,
     actionRequired: userApplications.filter(
-      (app) => app.status === "documents-pending"
+      (app) => app.status === "documents-pending" || app.status === "interview-needed"
     ).length,
   };
 
@@ -81,6 +82,8 @@ const UserDashboard = () => {
         return "bg-blue-100 text-blue-800 border-blue-200";
       case "documents-pending":
         return "bg-orange-100 text-orange-800 border-orange-200";
+      case "interview-needed":
+        return "bg-purple-100 text-purple-800 border-purple-200";
       case "rejected":
         return "bg-red-100 text-red-800 border-red-200";
       default:
@@ -213,28 +216,51 @@ const UserDashboard = () => {
                 ) : (
                   <div className="space-y-3">
                     {userApplications
-                      .filter((app) => app.status === "documents-pending")
+                      .filter((app) => app.status === "documents-pending" || app.status === "interview-needed")
                       .map((app) => (
                         <div
                           key={app.id}
-                          className="flex items-center justify-between p-4 bg-orange-50 rounded-lg border border-orange-100"
+                          className={`flex items-center justify-between p-4 rounded-lg border ${
+                            app.status === "documents-pending"
+                              ? "bg-orange-50 border-orange-100"
+                              : "bg-purple-50 border-purple-100"
+                          }`}
                         >
                           <div className="flex items-center gap-3">
-                            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-orange-100">
-                              <FileCheck className="h-5 w-5 text-orange-600" />
+                            <div className={`flex items-center justify-center w-10 h-10 rounded-lg ${
+                              app.status === "documents-pending"
+                                ? "bg-orange-100"
+                                : "bg-purple-100"
+                            }`}>
+                              {app.status === "documents-pending" ? (
+                                <FileCheck className="h-5 w-5 text-orange-600" />
+                              ) : (
+                                <MessageSquare className="h-5 w-5 text-purple-600" />
+                              )}
                             </div>
                             <div>
                               <p className="font-medium text-gray-900">
                                 {app.programme} Application
                               </p>
                               <p className="text-sm text-gray-600">
-                                Documents pending for {app.company}
+                                {app.status === "documents-pending"
+                                  ? `Documents pending for ${app.company}`
+                                  : `Interview needed for ${app.company}`}
                               </p>
                             </div>
                           </div>
                           <Button size="sm" className="gap-2">
-                            <FileCheck className="h-4 w-4" />
-                            Upload Documents
+                            {app.status === "documents-pending" ? (
+                              <>
+                                <FileCheck className="h-4 w-4" />
+                                Upload Documents
+                              </>
+                            ) : (
+                              <>
+                                <MessageSquare className="h-4 w-4" />
+                                Take Interview
+                              </>
+                            )}
                           </Button>
                         </div>
                       ))}
@@ -411,6 +437,15 @@ const UserDashboard = () => {
                               >
                                 <FileCheck className="h-4 w-4" />
                                 Upload Documents
+                              </Button>
+                            )}
+                            {application.status === "interview-needed" && (
+                              <Button
+                                variant="outline"
+                                className="cursor-pointer gap-2 w-full border-purple-200 text-purple-700 hover:bg-purple-50"
+                              >
+                                <MessageSquare className="h-4 w-4" />
+                                Take Interview
                               </Button>
                             )}
                           </div>
