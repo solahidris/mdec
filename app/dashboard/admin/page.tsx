@@ -90,14 +90,14 @@ const Dashboard = () => {
                   icon={FileText}
                   description="All programmes"
                   trend={{ value: "12%", isPositive: true }}
-                  color="bg-blue-500"
+                  color="bg-red-600"
                 />
                 <DashboardStatCard
                   title="Under Review"
                   value={stats.underReview}
                   icon={Clock}
                   description="In processing"
-                  color="bg-yellow-500"
+                  color="bg-gray-500"
                 />
                 <DashboardStatCard
                   title="Approved"
@@ -105,14 +105,14 @@ const Dashboard = () => {
                   icon={CheckCircle}
                   description="Successfully processed"
                   trend={{ value: "8%", isPositive: true }}
-                  color="bg-green-500"
+                  color="bg-gray-600"
                 />
                 <DashboardStatCard
                   title="Action Required"
                   value={stats.documentsPending}
                   icon={AlertCircle}
                   description="Documents pending"
-                  color="bg-orange-500"
+                  color="bg-gray-700"
                 />
               </div>
             </div>
@@ -125,8 +125,8 @@ const Dashboard = () => {
                 <Card className="p-6 bg-white shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="p-3 bg-purple-100 rounded-lg">
-                        <Users className="h-6 w-6 text-purple-600" />
+                      <div className="p-3 bg-gray-100 rounded-lg">
+                        <Users className="h-6 w-6 text-gray-700" />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900">Expats</h3>
@@ -154,8 +154,8 @@ const Dashboard = () => {
                 <Card className="p-6 bg-white shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="p-3 bg-blue-100 rounded-lg">
-                        <Rocket className="h-6 w-6 text-blue-600" />
+                      <div className="p-3 bg-gray-100 rounded-lg">
+                        <Rocket className="h-6 w-6 text-gray-700" />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900">MTEP</h3>
@@ -183,8 +183,8 @@ const Dashboard = () => {
                 <Card className="p-6 bg-white shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="p-3 bg-green-100 rounded-lg">
-                        <Plane className="h-6 w-6 text-green-600" />
+                      <div className="p-3 bg-gray-100 rounded-lg">
+                        <Plane className="h-6 w-6 text-gray-700" />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900">DE Rantau</h3>
@@ -216,50 +216,50 @@ const Dashboard = () => {
               <Card className="p-6 bg-white shadow-sm">
                 <h3 className="text-lg font-semibold text-gray-900 mb-6">Status Distribution</h3>
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 bg-blue-500 rounded-lg">
+                      <div className="p-2 bg-gray-600 rounded-lg">
                         <FileText className="h-4 w-4 text-white" />
                       </div>
                       <span className="font-medium text-gray-900">Submitted</span>
                     </div>
-                    <span className="text-2xl font-bold text-blue-600">{stats.submitted}</span>
+                    <span className="text-2xl font-bold text-gray-700">{stats.submitted}</span>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 bg-yellow-500 rounded-lg">
+                      <div className="p-2 bg-gray-600 rounded-lg">
                         <Clock className="h-4 w-4 text-white" />
                       </div>
                       <span className="font-medium text-gray-900">Under Review</span>
                     </div>
-                    <span className="text-2xl font-bold text-yellow-600">{stats.underReview}</span>
+                    <span className="text-2xl font-bold text-gray-700">{stats.underReview}</span>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-orange-50 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 bg-orange-500 rounded-lg">
+                      <div className="p-2 bg-gray-600 rounded-lg">
                         <AlertCircle className="h-4 w-4 text-white" />
                       </div>
                       <span className="font-medium text-gray-900">Documents Pending</span>
                     </div>
-                    <span className="text-2xl font-bold text-orange-600">{stats.documentsPending}</span>
+                    <span className="text-2xl font-bold text-gray-700">{stats.documentsPending}</span>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 bg-green-500 rounded-lg">
+                      <div className="p-2 bg-gray-600 rounded-lg">
                         <CheckCircle className="h-4 w-4 text-white" />
                       </div>
                       <span className="font-medium text-gray-900">Approved</span>
                     </div>
-                    <span className="text-2xl font-bold text-green-600">{stats.approved}</span>
+                    <span className="text-2xl font-bold text-gray-700">{stats.approved}</span>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 bg-red-500 rounded-lg">
+                      <div className="p-2 bg-gray-600 rounded-lg">
                         <XCircle className="h-4 w-4 text-white" />
                       </div>
                       <span className="font-medium text-gray-900">Rejected</span>
                     </div>
-                    <span className="text-2xl font-bold text-red-600">{stats.rejected}</span>
+                    <span className="text-2xl font-bold text-gray-700">{stats.rejected}</span>
                   </div>
                 </div>
               </Card>
@@ -276,11 +276,11 @@ const Dashboard = () => {
                       </div>
                       <div className="text-right">
                         <span className={`capitalize inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                          app.status === 'approved' ? 'bg-green-100 text-green-800' :
-                          app.status === 'rejected' ? 'bg-red-100 text-red-800' :
-                          app.status === 'under-review' ? 'bg-yellow-100 text-yellow-800' :
-                          app.status === 'documents-pending' ? 'bg-orange-100 text-orange-800' :
-                          'bg-blue-100 text-blue-800'
+                          app.status === 'approved' ? 'bg-gray-100 text-gray-800' :
+                          app.status === 'rejected' ? 'bg-gray-100 text-gray-800' :
+                          app.status === 'under-review' ? 'bg-gray-100 text-gray-800' :
+                          app.status === 'documents-pending' ? 'bg-gray-100 text-gray-800' :
+                          'bg-gray-100 text-gray-800'
                         }`}>
                           {app.status.replace('-', ' ')}
                         </span>

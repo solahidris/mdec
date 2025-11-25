@@ -52,6 +52,12 @@ const mainMenuItems = [
     active: true,
   },
   {
+    title: "Application Status",
+    url: "/dashboard/admin/applications",
+    icon: BarChart3,
+    active: true,
+  },
+  {
     title: "Pipeline",
     url: "/dashboard/admin/pipeline",
     icon: Workflow,
@@ -62,12 +68,6 @@ const mainMenuItems = [
     url: "/dashboard/admin/flowchart",
     icon: GitBranch,
     active: true,
-  },
-  {
-    title: "Analytics",
-    url: "#",
-    icon: BarChart3,
-    active: false,
   },
 ];
 
@@ -164,8 +164,8 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {mainMenuItems.map((item) => {
-                // Pipeline and Flow Chart should only be active on admin dashboard
-                const isAdminOnlyItem = item.title === "Pipeline" || item.title === "Flow Chart";
+                // Application Status, Pipeline and Flow Chart should only be active on admin dashboard
+                const isAdminOnlyItem = item.title === "Application Status" || item.title === "Pipeline" || item.title === "Flow Chart";
                 const isActive = isAdminOnlyItem ? (item.active && isAdminDashboard) : item.active;
                 
                 return (
