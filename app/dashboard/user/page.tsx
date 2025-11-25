@@ -249,7 +249,15 @@ const UserDashboard = () => {
                               </p>
                             </div>
                           </div>
-                          <Button size="sm" className="gap-2">
+                          <Button 
+                            size="sm" 
+                            className="gap-2"
+                            onClick={() => {
+                              if (app.status === "interview-needed") {
+                                router.push(`/dashboard/user/application/${app.id}/interview`);
+                              }
+                            }}
+                          >
                             {app.status === "documents-pending" ? (
                               <>
                                 <FileCheck className="h-4 w-4" />
@@ -443,6 +451,7 @@ const UserDashboard = () => {
                               <Button
                                 variant="outline"
                                 className="cursor-pointer gap-2 w-full border-purple-200 text-purple-700 hover:bg-purple-50"
+                                onClick={() => router.push(`/dashboard/user/application/${application.id}/interview`)}
                               >
                                 <MessageSquare className="h-4 w-4" />
                                 Take Interview

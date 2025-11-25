@@ -279,6 +279,38 @@ const ApplicationDetail = () => {
                   </CardContent>
                 </Card>
 
+                {/* Interview Needed */}
+                {application.status === "interview-needed" && (
+                  <Card className="bg-white border-0 shadow-sm">
+                    <CardHeader>
+                      <CardTitle className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+                        <MessageSquare className="h-5 w-5 text-primary" />
+                        Interview Required
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                        <div className="flex items-start gap-3">
+                          <MessageSquare className="h-5 w-5 text-purple-600 shrink-0 mt-0.5" />
+                          <div className="flex-1">
+                            <h4 className="font-medium text-gray-900 mb-1">Interview Needed</h4>
+                            <p className="text-sm text-gray-600 mb-3">
+                              Your application has been reviewed. Please take the interview to proceed.
+                            </p>
+                            <Button 
+                              className="gap-2 bg-purple-600 hover:bg-purple-700"
+                              onClick={() => router.push(`/dashboard/user/application/${application.id}/interview`)}
+                            >
+                              <MessageSquare className="h-4 w-4" />
+                              Take Interview
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+
                 {/* Documents */}
                 <Card className="bg-white border-0 shadow-sm">
                   <CardHeader>
@@ -485,12 +517,6 @@ const ApplicationDetail = () => {
                       <Button className="w-full gap-2 justify-start">
                         <Upload className="h-4 w-4" />
                         Upload Documents
-                      </Button>
-                    )}
-                    {application.status === "interview-needed" && (
-                      <Button className="w-full gap-2 justify-start bg-purple-600 hover:bg-purple-700">
-                        <MessageSquare className="h-4 w-4" />
-                        Take Interview
                       </Button>
                     )}
                   </CardContent>
