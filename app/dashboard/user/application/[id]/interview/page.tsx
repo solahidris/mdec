@@ -22,7 +22,7 @@ import {
 import { Message, MessageContent } from "@/components/ui/message";
 import { Response } from "@/components/ui/response";
 import { ShimmeringText } from "@/components/ui/shimmering-text";
-import { LiveWaveform } from "@/components/ui/live-waveform";
+import { Orb } from "@/components/ui/orb";
 import {
   Mic,
   CheckCircle2,
@@ -31,6 +31,12 @@ import {
   PhoneOff,
   RotateCcw,
   Volume2,
+  Camera,
+  Video,
+  VideoOff,
+  MicOff,
+  MessageSquare,
+  X,
 } from "lucide-react";
 
 // Types
@@ -83,10 +89,27 @@ const InterviewPage = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isListening, setIsListening] = useState(false);
   const [streamingContent, setStreamingContent] = useState("");
+  const [userStreamingContent, setUserStreamingContent] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
+
+  // Video call controls
+  const [isCameraOn, setIsCameraOn] = useState(true);
+  const [isMicOn, setIsMicOn] = useState(true);
+  const [showTranscript, setShowTranscript] = useState(false);
+
+  // Video refs
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const streamRef = useRef<MediaStream | null>(null);
 
   // Setup checks state
   const [setupChecks, setSetupChecks] = useState<SetupCheck[]>([
+    {
+      id: "camera",
+      label: "Camera Access",
+      description: "Allow camera access for video interview",
+      status: "pending",
+      icon: <Camera className="h-5 w-5" />,
+    },
     {
       id: "microphone",
       label: "Microphone Access",
@@ -118,8 +141,42 @@ const InterviewPage = () => {
       if (simulationTimeoutRef.current) {
         clearTimeout(simulationTimeoutRef.current);
       }
+      stopWebcam();
     };
   }, []);
+
+  // Re-attach stream when video element changes (e.g. switching views)
+  useEffect(() => {
+    if (videoRef.current && streamRef.current) {
+      videoRef.current.srcObject = streamRef.current;
+    }
+  }, [interviewState]); // Re-run when interview state changes (view switch)
+
+  // Initialize webcam
+  const startWebcam = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true,
+      });
+
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+      }
+      streamRef.current = stream;
+      return true;
+    } catch (err) {
+      console.error("Error accessing webcam:", err);
+      return false;
+    }
+  };
+
+  const stopWebcam = () => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach((track) => track.stop());
+      streamRef.current = null;
+    }
+  };
 
   // Check individual setup item
   const runSetupCheck = useCallback(async (checkId: string) => {
@@ -128,6 +185,19 @@ const InterviewPage = () => {
         check.id === checkId ? { ...check, status: "checking" } : check
       )
     );
+
+    // Special handling for camera/mic
+    if (checkId === "camera" || checkId === "microphone") {
+      const success = await startWebcam();
+      if (!success) {
+        setSetupChecks((prev) =>
+          prev.map((check) =>
+            check.id === checkId ? { ...check, status: "error" } : check
+          )
+        );
+        return;
+      }
+    }
 
     // Simulate check delay
     await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -154,29 +224,62 @@ const InterviewPage = () => {
     (check) => check.status === "success"
   );
 
-  // Simulate streaming text effect
-  const streamText = useCallback(
-    (text: string, onComplete: () => void) => {
-      setIsStreaming(true);
-      setStreamingContent("");
-      setAgentState("talking");
+  // Simulate streaming text effect for AI
+  const streamText = useCallback((text: string, onComplete: () => void) => {
+    setIsStreaming(true);
+    setStreamingContent("");
+    setAgentState("talking");
+
+    const words = text.split(" ");
+    let currentIndex = 0;
+
+    const streamInterval = setInterval(() => {
+      if (currentIndex < words.length) {
+        const currentWord = words[currentIndex];
+        if (currentWord) {
+          setStreamingContent((prev) =>
+            prev ? `${prev} ${currentWord}` : currentWord
+          );
+        }
+        currentIndex++;
+      } else {
+        clearInterval(streamInterval);
+        setAgentState(null);
+
+        // Keep text visible for a moment before proceeding
+        simulationTimeoutRef.current = setTimeout(() => {
+          setIsStreaming(false);
+          onComplete();
+        }, 2000);
+      }
+    }, 150); // Slowed down from 80ms to 150ms
+
+    return () => clearInterval(streamInterval);
+  }, []);
+
+  // Simulate streaming text effect for User
+  const streamUserText = useCallback(
+    (text: string, duration: number, onComplete: () => void) => {
+      setUserStreamingContent("");
 
       const words = text.split(" ");
+      const intervalTime = duration / words.length;
       let currentIndex = 0;
 
       const streamInterval = setInterval(() => {
         if (currentIndex < words.length) {
-          setStreamingContent((prev) =>
-            prev ? `${prev} ${words[currentIndex]}` : words[currentIndex]
-          );
+          const currentWord = words[currentIndex];
+          if (currentWord) {
+            setUserStreamingContent((prev) =>
+              prev ? `${prev} ${currentWord}` : currentWord
+            );
+          }
           currentIndex++;
         } else {
           clearInterval(streamInterval);
-          setIsStreaming(false);
-          setAgentState(null);
           onComplete();
         }
-      }, 80);
+      }, intervalTime);
 
       return () => clearInterval(streamInterval);
     },
@@ -206,11 +309,11 @@ const InterviewPage = () => {
           // Wait a moment then complete
           setTimeout(() => {
             setInterviewState("completed");
-          }, 2000);
+          }, 3000);
           return;
         }
 
-        // Pause before user responds
+        // Pause before user responds (Transition delay)
         setTimeout(() => {
           // User responds (listening state)
           setIsListening(true);
@@ -218,13 +321,25 @@ const InterviewPage = () => {
 
           // Simulate user speaking duration (varies by response length)
           const speakingDuration = Math.min(
-            2000 + MOCK_USER_RESPONSES[questionIndex].length * 20,
-            5000
+            3000 + MOCK_USER_RESPONSES[questionIndex].length * 30, // Increased base duration and per-char duration
+            8000 // Increased max duration
           );
 
+          // Stream user text simulation
+          // We run this for speakingDuration
+          const stopStream = streamUserText(
+            MOCK_USER_RESPONSES[questionIndex],
+            speakingDuration,
+            () => {
+              // This runs when user finishes speaking
+            }
+          );
+
+          // We wait for speakingDuration + BUFFER to ensure stream finishes and user can read it
           simulationTimeoutRef.current = setTimeout(() => {
             setIsListening(false);
             setAgentState(null);
+            setUserStreamingContent("");
 
             // Add user message
             const userMessage: ChatMessage = {
@@ -238,12 +353,12 @@ const InterviewPage = () => {
             setTimeout(() => {
               setCurrentQuestionIndex(questionIndex + 1);
               simulateConversationTurn(questionIndex + 1);
-            }, 1500);
-          }, speakingDuration);
-        }, 1000);
+            }, 2000); // Increased pause before next question
+          }, speakingDuration + 1000); // Added 1s buffer so text doesn't cut off
+        }, 2500); // Increased transition delay from 1500 to 2500
       });
     },
-    [streamText]
+    [streamText, streamUserText]
   );
 
   // Start the interview
@@ -255,7 +370,7 @@ const InterviewPage = () => {
     // Start the conversation flow
     setTimeout(() => {
       simulateConversationTurn(0);
-    }, 500);
+    }, 1000);
   }, [simulateConversationTurn]);
 
   // End interview early
@@ -267,6 +382,7 @@ const InterviewPage = () => {
     setAgentState(null);
     setIsStreaming(false);
     setInterviewState("completed");
+    stopWebcam();
   }, []);
 
   // Reset interview
@@ -281,11 +397,12 @@ const InterviewPage = () => {
     setSetupChecks((prev) =>
       prev.map((check) => ({ ...check, status: "pending" }))
     );
+    stopWebcam();
   }, []);
 
   // Render setup screen
   const renderSetupScreen = () => (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
       <Card className="border bg-card shadow-lg">
         <CardHeader className="pb-2">
           <CardTitle className="text-2xl">AI Interview Setup</CardTitle>
@@ -349,19 +466,6 @@ const InterviewPage = () => {
             ))}
           </div>
 
-          {/* Tips section */}
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-            <h4 className="font-medium text-amber-900 mb-2">
-              Interview Tips
-            </h4>
-            <ul className="text-sm text-amber-800 space-y-1">
-              <li>• Speak clearly and at a moderate pace</li>
-              <li>• Take your time to think before answering</li>
-              <li>• The interview typically takes 10-15 minutes</li>
-              <li>• You can end the interview at any time</li>
-            </ul>
-          </div>
-
           {/* Action buttons */}
           <div className="flex gap-3 pt-2">
             <Button
@@ -383,104 +487,174 @@ const InterviewPage = () => {
           </div>
         </CardContent>
       </Card>
+
+      {/* Video Preview */}
+      <Card className="border bg-card shadow-lg flex flex-col">
+        <CardHeader>
+          <CardTitle>Camera Preview</CardTitle>
+          <CardDescription>Check your camera and lighting</CardDescription>
+        </CardHeader>
+        <CardContent className="flex-1 flex items-center justify-center p-6 rounded-b-lg">
+          <div className="relative w-full aspect-video bg-black rounded-lg overflow-hidden flex items-center justify-center">
+            <video
+              ref={videoRef}
+              autoPlay
+              playsInline
+              muted
+              className="w-full h-full object-cover"
+            />
+            {!streamRef.current && (
+              <div className="absolute inset-0 flex items-center justify-center text-white/50">
+                <p>Camera is off</p>
+              </div>
+            )}
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 
   // Render interview in progress
   const renderInterviewScreen = () => (
-    <div className="max-w-4xl mx-auto h-full flex flex-col">
-      <Card className="border bg-card shadow-lg flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
-        <CardHeader className="border-b flex-shrink-0">
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle className="text-lg">MDEC AI Interviewer</CardTitle>
-              <CardDescription>
-                {agentState === "talking" ? (
-                  <ShimmeringText text="Speaking..." />
-                ) : agentState === "listening" ? (
-                  <ShimmeringText text="Listening..." />
-                ) : (
-                  `Question ${currentQuestionIndex + 1} of ${MOCK_INTERVIEW_QUESTIONS.length}`
-                )}
-              </CardDescription>
+    <div className="h-full flex flex-col lg:flex-row gap-4">
+      {/* Main Video Area */}
+      <div className="flex-1 flex flex-col gap-4">
+        <Card className="flex-1 border bg-black shadow-lg overflow-hidden relative">
+          {/* AI Interviewer Visualization */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center pb-48">
+            <div className="w-64 h-64 flex items-center justify-center mb-8">
+              <Orb colors={["#3b82f6", "#8b5cf6"]} />
             </div>
+            <div className="absolute bottom-32 text-center space-y-4 max-w-3xl px-8 z-10">
+              {isStreaming ? (
+                <p className="text-2xl font-medium text-white leading-relaxed drop-shadow-md">
+                  {streamingContent}
+                </p>
+              ) : (
+                <div className="space-y-4">
+                  <p className="text-xl text-white/60 drop-shadow-md animate-pulse">
+                    {agentState === "listening"
+                      ? "Listening..."
+                      : "Thinking..."}
+                  </p>
+                  {agentState === "listening" && userStreamingContent && (
+                    <p className="text-2xl font-medium text-white leading-relaxed drop-shadow-md">
+                      &ldquo;{userStreamingContent}&rdquo;
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* User Self View (PIP) */}
+          <div className="absolute bottom-6 right-6 w-64 aspect-video bg-gray-900 rounded-lg overflow-hidden shadow-2xl border border-white/10 z-20 group">
+            <video
+              ref={videoRef}
+              autoPlay
+              playsInline
+              muted
+              className={`w-full h-full object-cover ${
+                !isCameraOn ? "hidden" : ""
+              }`}
+            />
+            {!isCameraOn && (
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-800 text-white/50">
+                <VideoOff className="h-8 w-8" />
+              </div>
+            )}
+            <div className="absolute bottom-2 left-2 px-2 py-1 bg-black/50 rounded text-xs text-white font-medium">
+              You
+            </div>
+          </div>
+
+          {/* Controls Overlay */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 px-6 py-3 bg-black/40 backdrop-blur-md rounded-full border border-white/10 z-20">
             <Button
-              variant="outline"
-              size="sm"
-              onClick={endInterview}
-              className="gap-2 border-red-300 bg-red-50 text-red-700 hover:bg-red-100 hover:text-red-800"
+              variant={isMicOn ? "secondary" : "destructive"}
+              size="icon"
+              className="rounded-full h-12 w-12"
+              onClick={() => setIsMicOn(!isMicOn)}
             >
-              <PhoneOff className="h-4 w-4" />
-              End Interview
+              {isMicOn ? (
+                <Mic className="h-5 w-5" />
+              ) : (
+                <MicOff className="h-5 w-5" />
+              )}
+            </Button>
+
+            <Button
+              variant={isCameraOn ? "secondary" : "destructive"}
+              size="icon"
+              className="rounded-full h-12 w-12"
+              onClick={() => setIsCameraOn(!isCameraOn)}
+            >
+              {isCameraOn ? (
+                <Video className="h-5 w-5" />
+              ) : (
+                <VideoOff className="h-5 w-5" />
+              )}
+            </Button>
+
+            <Button
+              variant="destructive"
+              size="icon"
+              className="rounded-full h-12 w-12 bg-red-600 hover:bg-red-700 text-white"
+              onClick={endInterview}
+            >
+              <PhoneOff className="h-5 w-5" />
+            </Button>
+
+            <div className="w-px h-8 bg-white/20 mx-2" />
+
+            <Button
+              variant={showTranscript ? "secondary" : "ghost"}
+              size="icon"
+              className="rounded-full h-12 w-12 text-white hover:bg-white/20"
+              onClick={() => setShowTranscript(!showTranscript)}
+            >
+              <MessageSquare className="h-5 w-5" />
             </Button>
           </div>
-        </CardHeader>
+        </Card>
+      </div>
 
-        {/* Conversation area */}
-        <CardContent className="flex-1 overflow-hidden p-0">
-          <Conversation className="h-full">
-            <ConversationContent className="p-6 space-y-4">
-              {messages.length === 0 && !isStreaming ? (
-                <div className="flex size-full flex-col items-center justify-center gap-3 p-8 text-center">
-                  <div className="space-y-1">
-                    <h3 className="text-sm font-medium">
-                      <ShimmeringText text="Starting interview..." />
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      Please wait while we connect you with the AI interviewer
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                <>
-                  {messages.map((message) => (
-                    <Message key={message.id} from={message.role}>
-                      <MessageContent variant="flat">
-                        <Response>{message.content}</Response>
-                      </MessageContent>
-                    </Message>
-                  ))}
-                  {isStreaming && streamingContent && (
-                    <Message from="assistant">
-                      <MessageContent variant="flat">
-                        <Response>{streamingContent}</Response>
-                      </MessageContent>
-                    </Message>
-                  )}
-                </>
-              )}
-            </ConversationContent>
-            <ConversationScrollButton />
-          </Conversation>
-        </CardContent>
-
-        {/* Controls */}
-        <div className="border-t p-6 flex-shrink-0">
-          <div className="max-w-lg mx-auto space-y-4">
-            <LiveWaveform
-              active={isListening}
-              processing={isStreaming}
-              height={60}
-              barWidth={4}
-              barGap={3}
-              barRadius={4}
-              barColor={isListening ? "#22c55e" : "#3b82f6"}
-              fadeEdges
-              fadeWidth={32}
-              sensitivity={1.2}
-              mode="static"
-            />
-            <p className="text-center text-sm text-muted-foreground">
-              {isListening
-                ? "You are speaking..."
-                : isStreaming
-                ? "AI is speaking..."
-                : "Waiting..."}
-            </p>
-          </div>
-        </div>
-      </Card>
+      {/* Transcript Sidebar (Collapsible) */}
+      {showTranscript && (
+        <Card className="w-96 border bg-card shadow-lg flex flex-col h-full animate-in slide-in-from-right duration-300">
+          <CardHeader className="flex-row items-center justify-between py-4 border-b">
+            <CardTitle className="text-base">Transcript</CardTitle>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setShowTranscript(false)}
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </CardHeader>
+          <CardContent className="flex-1 overflow-hidden p-0">
+            <Conversation className="h-full">
+              <ConversationContent className="p-4 space-y-4">
+                {messages.map((message) => (
+                  <Message key={message.id} from={message.role}>
+                    <MessageContent variant="flat" className="text-sm">
+                      <Response>{message.content}</Response>
+                    </MessageContent>
+                  </Message>
+                ))}
+                {isStreaming && streamingContent && (
+                  <Message from="assistant">
+                    <MessageContent variant="flat" className="text-sm">
+                      <Response>{streamingContent}</Response>
+                    </MessageContent>
+                  </Message>
+                )}
+              </ConversationContent>
+              <ConversationScrollButton />
+            </Conversation>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 
@@ -526,23 +700,35 @@ const InterviewPage = () => {
 
           {/* Next steps */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <h4 className="font-medium text-blue-900 mb-2">What&apos;s Next?</h4>
+            <h4 className="font-medium text-blue-900 mb-2">
+              What&apos;s Next?
+            </h4>
             <ul className="text-sm text-blue-800 space-y-1">
-              <li>• Your interview will be reviewed within 5-7 business days</li>
-              <li>• You&apos;ll receive an email notification with the results</li>
+              <li>
+                • Your interview will be reviewed within 5-7 business days
+              </li>
+              <li>
+                • You&apos;ll receive an email notification with the results
+              </li>
               <li>• You can track your application status in the dashboard</li>
             </ul>
           </div>
 
           {/* Action buttons */}
           <div className="flex gap-3 pt-2">
-            <Button variant="outline" className="flex-1" onClick={resetInterview}>
+            <Button
+              variant="outline"
+              className="flex-1"
+              onClick={resetInterview}
+            >
               <RotateCcw className="h-4 w-4 mr-2" />
               Retake Interview
             </Button>
             <Button
               className="flex-1"
-              onClick={() => router.push(`/dashboard/user/application/${applicationId}`)}
+              onClick={() =>
+                router.push(`/dashboard/user/application/${applicationId}`)
+              }
             >
               Back to Application
               <ArrowRight className="h-4 w-4 ml-2" />
