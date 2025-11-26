@@ -5,6 +5,7 @@ import { RootProvider } from "fumadocs-ui/provider/next";
 import { ChatWidget } from "@/components/chat-widget";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { Toaster } from "@/components/ui/toaster";
+import { ByRapidScreen } from "@/components/by-rapidscreen";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
         <RootProvider theme={{ defaultTheme: "light", forcedTheme: "light" }}>
           <AuthProvider>
             {children}
+            <ByRapidScreen />
             <ChatWidget />
             <Toaster />
           </AuthProvider>
