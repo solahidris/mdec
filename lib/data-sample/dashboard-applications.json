@@ -6,7 +6,7 @@
       "programme": "Expats",
       "company": "TechCorp Solutions Sdn Bhd",
       "submittedDate": "2024-11-01",
-      "status": "submitted",
+      "status": "approved",
       "priority": "high",
       "email": "john.lee@techcorp.com",
       "phone": "+60123456789",
@@ -158,4 +158,3 @@
     }
   ]
 }
-

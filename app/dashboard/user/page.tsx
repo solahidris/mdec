@@ -60,7 +60,8 @@ const UserDashboard = () => {
     approved: userApplications.filter((app) => app.status === "approved")
       .length,
     actionRequired: userApplications.filter(
-      (app) => app.status === "documents-pending" || app.status === "interview-needed"
+      (app) =>
+        app.status === "documents-pending" || app.status === "interview-needed"
     ).length,
   };
 
@@ -216,7 +217,11 @@ const UserDashboard = () => {
                 ) : (
                   <div className="space-y-3">
                     {userApplications
-                      .filter((app) => app.status === "documents-pending" || app.status === "interview-needed")
+                      .filter(
+                        (app) =>
+                          app.status === "documents-pending" ||
+                          app.status === "interview-needed"
+                      )
                       .map((app) => (
                         <div
                           key={app.id}
@@ -227,11 +232,13 @@ const UserDashboard = () => {
                           }`}
                         >
                           <div className="flex items-center gap-3">
-                            <div className={`flex items-center justify-center w-10 h-10 rounded-lg ${
-                              app.status === "documents-pending"
-                                ? "bg-orange-100"
-                                : "bg-purple-100"
-                            }`}>
+                            <div
+                              className={`flex items-center justify-center w-10 h-10 rounded-lg ${
+                                app.status === "documents-pending"
+                                  ? "bg-orange-100"
+                                  : "bg-purple-100"
+                              }`}
+                            >
                               {app.status === "documents-pending" ? (
                                 <FileCheck className="h-5 w-5 text-orange-600" />
                               ) : (
@@ -249,12 +256,14 @@ const UserDashboard = () => {
                               </p>
                             </div>
                           </div>
-                          <Button 
-                            size="sm" 
+                          <Button
+                            size="sm"
                             className="gap-2"
                             onClick={() => {
                               if (app.status === "interview-needed") {
-                                router.push(`/dashboard/user/application/${app.id}/interview`);
+                                router.push(
+                                  `/dashboard/user/application/${app.id}/interview`
+                                );
                               }
                             }}
                           >
@@ -267,6 +276,85 @@ const UserDashboard = () => {
                               <>
                                 <MessageSquare className="h-4 w-4" />
                                 Take Interview
+                              </>
+                            )}
+                          </Button>
+                        </div>
+                      ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Payment Required */}
+            <Card className="bg-white border-0 shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-lg font-medium text-gray-900 flex items-center gap-2">
+                  <AlertCircle className="h-5 w-5 text-orange-600" />
+                  Payment Required
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {stats.actionRequired === 0 ? (
+                  <div className="text-center py-4">
+                    <CheckCircle className="h-10 w-10 text-green-600 mx-auto mb-3" />
+                    <p className="text-base font-medium text-gray-900 mb-1">
+                      You&apos;re all good for now!
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      No pending actions required on your applications
+                    </p>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {userApplications
+                      .filter((app) => app.status === "approved")
+                      .map((app) => (
+                        <div
+                          key={app.id}
+                          className={`flex items-center justify-between p-4 rounded-lg border ${
+                            app.status === "approved"
+                              ? "bg-green-50 border-green-100"
+                              : "bg-gray-50 border-gray-100"
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div
+                              className={`flex items-center justify-center w-10 h-10 rounded-lg ${
+                                app.status === "approved"
+                                  ? "bg-green-100"
+                                  : "bg-purple-100"
+                              }`}
+                            >
+                              {app.status === "approved" ? (
+                                <CheckCircle className="h-5 w-5 text-green-600" />
+                              ) : (
+                                <FileCheck className="h-5 w-5 text-green-600" />
+                              )}
+                            </div>
+                            <div>
+                              <p className="font-medium text-gray-900">
+                                {app.programme} Application
+                              </p>
+                              <p className="text-sm text-gray-600">
+                                Payment required for {app.company}
+                              </p>
+                            </div>
+                          </div>
+                          <Button
+                            size="sm"
+                            className="gap-2 cursor-pointer text-white bg-green-600 hover:bg-green-700"
+                            variant="default"
+                            onClick={() => {
+                              router.push(
+                                `/dashboard/user/application/${app.id}/payment`
+                              );
+                            }}
+                          >
+                            {app.status === "approved" && (
+                              <>
+                                <CheckCircle className="h-4 w-4" />
+                                Pay Now
                               </>
                             )}
                           </Button>
@@ -324,8 +412,8 @@ const UserDashboard = () => {
                       No applications found
                     </h3>
                     <p className="text-gray-600 mb-4">
-                      You haven&apos;t submitted any applications yet. Start your
-                      journey with MDEC!
+                      You haven&apos;t submitted any applications yet. Start
+                      your journey with MDEC!
                     </p>
                     <Button className="gap-2">
                       <Plus className="h-4 w-4" />
@@ -451,7 +539,11 @@ const UserDashboard = () => {
                               <Button
                                 variant="outline"
                                 className="cursor-pointer gap-2 w-full border-purple-200 text-purple-700 hover:bg-purple-50"
-                                onClick={() => router.push(`/dashboard/user/application/${application.id}/interview`)}
+                                onClick={() =>
+                                  router.push(
+                                    `/dashboard/user/application/${application.id}/interview`
+                                  )
+                                }
                               >
                                 <MessageSquare className="h-4 w-4" />
                                 Take Interview
