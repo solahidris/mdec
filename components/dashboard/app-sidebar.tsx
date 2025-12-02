@@ -21,6 +21,7 @@ import {
   Workflow,
   GitBranch,
   Shield,
+  Brain,
 } from "lucide-react";
 
 import {
@@ -71,6 +72,13 @@ const mainMenuItems = [
     title: "Flow Chart",
     url: "/dashboard/admin/flowchart",
     icon: GitBranch,
+    active: true,
+    roles: ["admin", "superadmin"],
+  },
+  {
+    title: "AI Scoring",
+    url: "/dashboard/admin/ai-scoring",
+    icon: Brain,
     active: true,
     roles: ["admin", "superadmin"],
   },
